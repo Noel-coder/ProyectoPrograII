@@ -18,18 +18,18 @@ import java.util.ArrayList;
  * @author noelg
  */
 public class adminPersona {
-    private ArrayList<persona> listaPersonas = new ArrayList();
+    private ArrayList<Persona> listaPersonas = new ArrayList();
     private File archivo = null;
 
     public adminPersona(String path) {
         archivo = new File(path);
     }
 
-    public ArrayList<persona> getListaPersonas() {
+    public ArrayList<Persona> getListaPersonas() {
         return listaPersonas;
     }
 
-    public void setListaPersonas(ArrayList<persona> listaPersonas) {
+    public void setListaPersonas(ArrayList<Persona> listaPersonas) {
         this.listaPersonas = listaPersonas;
     }
 
@@ -47,21 +47,21 @@ public class adminPersona {
     }
 
     //extra mutador
-    public void setPersona(persona p) {
+    public void setPersona(Persona p) {
         this.listaPersonas.add(p);
     }
 
     public void cargarArchivo() {
         try {            
             listaPersonas = new ArrayList();
-            persona temp;
+            Persona temp;
             if (archivo.exists()) {
                   FileInputStream entrada
                     = new FileInputStream(archivo);
                 ObjectInputStream objeto
                     = new ObjectInputStream(entrada);
                 try {
-                    while ((temp = (persona) objeto.readObject()) != null) {
+                    while ((temp = (Persona) objeto.readObject()) != null) {
                         listaPersonas.add(temp);
                     }
                 } catch (EOFException e) {
@@ -81,7 +81,7 @@ public class adminPersona {
         try {
             fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
-            for (persona t : listaPersonas) {
+            for (Persona t : listaPersonas) {
                 bw.writeObject(t);
             }
             bw.flush();

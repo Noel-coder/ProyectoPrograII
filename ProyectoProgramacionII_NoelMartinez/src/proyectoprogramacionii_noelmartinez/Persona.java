@@ -12,26 +12,26 @@ import javax.swing.Icon;
  *
  * @author noelg
  */
-public class persona implements Serializable{
-    private String usuario,contraseña;
-    private String correo;
+public class Persona implements Serializable{
+    private String usuario,contraseña,correo;
     
     private static final long SerialVersionUID=777L;
 
-    public persona(String usuario, String contraseña, String correo) {
-        this.usuario = usuario;
+    public Persona() {
+    }
+
+    public Persona(String Usuario, String contraseña, String correo) {
+        this.usuario = Usuario;
         this.contraseña = contraseña;
         this.correo = correo;
     }
-
-
 
     public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuario(String Usuario) {
+        this.usuario = Usuario;
     }
 
     public String getContraseña() {
@@ -52,12 +52,9 @@ public class persona implements Serializable{
 
     @Override
     public String toString() {
-        return "persona{" + "usuario=" + usuario + ", contrase\u00f1a=" + contraseña + ", correo=" + correo + '}';
+        return "Persona{" + "Usuario=" + usuario + ", contrase\u00f1a=" + contraseña + ", correo=" + correo + '}';
     }
 
-   
-    
-    
     
     
 }

@@ -9,12 +9,21 @@ import AppPackage.AnimationClass;
 import com.sun.glass.events.ViewEvent;
 import java.awt.Color;
 import java.awt.GraphicsEnvironment;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.animation.Animation;
@@ -25,8 +34,10 @@ import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -83,7 +94,6 @@ public class principal extends javax.swing.JFrame {
         jd_login = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         tf_usuarioIng = new javax.swing.JTextField();
@@ -96,14 +106,24 @@ public class principal extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jd_inbox = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        bt_inbox = new javax.swing.JButton();
+        bt_chats = new javax.swing.JButton();
+        bt_correosenviadosInbox = new javax.swing.JButton();
+        bt_spamInbox = new javax.swing.JButton();
+        bt_tareasInbox = new javax.swing.JButton();
+        bt_borradoresInbox = new javax.swing.JButton();
+        bt_contactosInbox = new javax.swing.JButton();
+        bt_basuraInbox = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel33 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tp_asuntoInbox = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tp_cuerpoinbox = new javax.swing.JTextPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tablainbox = new javax.swing.JTable();
+        jLabel35 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jl_usuario = new javax.swing.JLabel();
         jl_userdentro = new javax.swing.JLabel();
@@ -112,13 +132,13 @@ public class principal extends javax.swing.JFrame {
         jl_fotoDentro = new javax.swing.JLabel();
         bt_seleccionar = new javax.swing.JButton();
         bt_eliminAR = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         cb_opciones = new javax.swing.JComboBox<>();
         jMenuBar2 = new javax.swing.JMenuBar();
         jm_editarcuenta = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jd_enviocorreos = new javax.swing.JDialog();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -139,7 +159,7 @@ public class principal extends javax.swing.JFrame {
         tf_para = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tp_asunto = new javax.swing.JTextPane();
-        jButton9 = new javax.swing.JButton();
+        bt_enviarcorreo = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jd_modificarDatos = new javax.swing.JDialog();
@@ -155,6 +175,31 @@ public class principal extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         rb_mModificar = new javax.swing.JRadioButton();
         rb_fModificar = new javax.swing.JRadioButton();
+        jButton11 = new javax.swing.JButton();
+        jd_libretadirecciones = new javax.swing.JDialog();
+        jPanel12 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla_libretadirecciones = new javax.swing.JTable();
+        jToolBar2 = new javax.swing.JToolBar();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jButton16 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        tf_buscar = new javax.swing.JTextField();
+        jd_spam = new javax.swing.JDialog();
+        jPanel13 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tp_spam = new javax.swing.JTextPane();
+        jButton19 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         bt_regisframe = new javax.swing.JButton();
         bt_iniciarFrame = new javax.swing.JButton();
@@ -181,8 +226,8 @@ public class principal extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel10.setText("correo:");
 
-        jLabel11.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel11.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 1, 30)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Registrate");
 
         bt_registrar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -253,10 +298,13 @@ public class principal extends javax.swing.JFrame {
                         .addGap(406, 406, 406)))
                 .addContainerGap(224, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(350, 350, 350)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bt_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(350, 350, 350)
+                        .addComponent(bt_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(364, 364, 364)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -271,7 +319,7 @@ public class principal extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(tf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(rb_m)
@@ -300,10 +348,9 @@ public class principal extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel4.setBackground(new java.awt.Color(51, 134, 224));
+        jd_login.setTitle("Login");
 
-        jLabel12.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
-        jLabel12.setText("InLook");
+        jPanel4.setBackground(new java.awt.Color(51, 134, 224));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
@@ -329,20 +376,14 @@ public class principal extends javax.swing.JFrame {
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Key_32px.png"))); // NOI18N
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_User_96px_2.png"))); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogoMakr_2RWFEq.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel18)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 104, Short.MAX_VALUE)
+                .addGap(0, 128, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -366,15 +407,17 @@ public class principal extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addComponent(jLabel13)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(91, Short.MAX_VALUE)
+                .addComponent(jLabel18)
+                .addGap(80, 80, 80))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel18))
-                .addGap(31, 31, 31)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel18)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel14)
@@ -402,7 +445,7 @@ public class principal extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(260, 260, 260)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,57 +466,120 @@ public class principal extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_inbox.setTitle("Inbox");
+
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Inbox");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
+        bt_inbox.setBackground(new java.awt.Color(255, 255, 255));
+        bt_inbox.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_inbox.setForeground(new java.awt.Color(0, 0, 0));
+        bt_inbox.setText("Inbox");
+        bt_inbox.setBorder(null);
+        bt_inbox.setBorderPainted(false);
+        bt_inbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_inboxActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Chats");
-        jButton2.setBorder(null);
+        bt_chats.setBackground(new java.awt.Color(255, 255, 255));
+        bt_chats.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_chats.setForeground(new java.awt.Color(0, 0, 0));
+        bt_chats.setText("Chats");
+        bt_chats.setBorder(null);
+        bt_chats.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_chatsMouseClicked(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Correos Enviados");
-        jButton3.setBorder(null);
+        bt_correosenviadosInbox.setBackground(new java.awt.Color(255, 255, 255));
+        bt_correosenviadosInbox.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_correosenviadosInbox.setForeground(new java.awt.Color(0, 0, 0));
+        bt_correosenviadosInbox.setText("Correos Enviados");
+        bt_correosenviadosInbox.setBorder(null);
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("No deseado");
-        jButton4.setBorder(null);
+        bt_spamInbox.setBackground(new java.awt.Color(255, 255, 255));
+        bt_spamInbox.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_spamInbox.setForeground(new java.awt.Color(0, 0, 0));
+        bt_spamInbox.setText("No deseado");
+        bt_spamInbox.setBorder(null);
+        bt_spamInbox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_spamInboxMouseClicked(evt);
+            }
+        });
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setText("Tareas");
-        jButton5.setBorder(null);
+        bt_tareasInbox.setBackground(new java.awt.Color(255, 255, 255));
+        bt_tareasInbox.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_tareasInbox.setForeground(new java.awt.Color(0, 0, 0));
+        bt_tareasInbox.setText("Tareas");
+        bt_tareasInbox.setBorder(null);
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jButton6.setText("Borradores");
-        jButton6.setBorder(null);
+        bt_borradoresInbox.setBackground(new java.awt.Color(255, 255, 255));
+        bt_borradoresInbox.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_borradoresInbox.setForeground(new java.awt.Color(0, 0, 0));
+        bt_borradoresInbox.setText("Borradores");
+        bt_borradoresInbox.setBorder(null);
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
-        jButton7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jButton7.setText("Contactos");
-        jButton7.setBorder(null);
+        bt_contactosInbox.setBackground(new java.awt.Color(255, 255, 255));
+        bt_contactosInbox.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_contactosInbox.setForeground(new java.awt.Color(0, 0, 0));
+        bt_contactosInbox.setText("Contactos");
+        bt_contactosInbox.setBorder(null);
 
-        jButton8.setBackground(new java.awt.Color(255, 255, 255));
-        jButton8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 0, 0));
-        jButton8.setText("Basura");
-        jButton8.setBorder(null);
+        bt_basuraInbox.setBackground(new java.awt.Color(255, 255, 255));
+        bt_basuraInbox.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_basuraInbox.setForeground(new java.awt.Color(0, 0, 0));
+        bt_basuraInbox.setText("Basura");
+        bt_basuraInbox.setBorder(null);
+
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel8.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 10, 580));
+
+        jLabel33.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel33.setText("Detalles");
+        jPanel8.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
+
+        jScrollPane5.setViewportView(tp_asuntoInbox);
+
+        jPanel8.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 450, 60));
+
+        jScrollPane6.setViewportView(tp_cuerpoinbox);
+
+        jPanel8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 140, 450, 290));
+
+        tablainbox.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Usuario"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablainbox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablainboxMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(tablainbox);
+
+        jPanel8.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 400, 580));
+
+        jLabel35.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel35.setText("Asunto:");
+        jPanel8.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -483,46 +589,50 @@ public class principal extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)))
+                        .addComponent(bt_correosenviadosInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
+                        .addComponent(bt_contactosInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(bt_borradoresInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(bt_inbox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bt_chats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bt_spamInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                    .addComponent(bt_basuraInbox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(bt_tareasInbox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(82, 82, 82)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_inbox, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jButton2)
+                .addComponent(bt_chats)
                 .addGap(26, 26, 26)
-                .addComponent(jButton3)
+                .addComponent(bt_correosenviadosInbox)
                 .addGap(26, 26, 26)
-                .addComponent(jButton6)
+                .addComponent(bt_borradoresInbox)
                 .addGap(28, 28, 28)
-                .addComponent(jButton4)
+                .addComponent(bt_spamInbox)
                 .addGap(30, 30, 30)
-                .addComponent(jButton8)
+                .addComponent(bt_basuraInbox)
                 .addGap(32, 32, 32)
-                .addComponent(jButton7)
+                .addComponent(bt_contactosInbox)
                 .addGap(34, 34, 34)
-                .addComponent(jButton5)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addComponent(bt_tareasInbox)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel7.setBackground(new java.awt.Color(102, 153, 255));
@@ -571,8 +681,6 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel7.add(bt_eliminAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 120, -1, -1));
 
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jPanel9.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel21.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -617,13 +725,21 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Detalles");
+        jMenuItem1.setText("Detalles de mi cuenta");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
         jm_editarcuenta.add(jMenuItem1);
+
+        jMenuItem2.setText("Libreta de direcciones");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jm_editarcuenta.add(jMenuItem2);
 
         jMenuBar2.add(jm_editarcuenta);
 
@@ -636,21 +752,20 @@ public class principal extends javax.swing.JFrame {
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jd_inboxLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jd_inboxLayout.setVerticalGroup(
             jd_inboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_inboxLayout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addGroup(jd_inboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        jd_enviocorreos.setTitle("Envio de Correos");
 
         jScrollPane1.setViewportView(tp_texto);
 
@@ -738,14 +853,24 @@ public class principal extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(tp_asunto);
 
-        jButton9.setBackground(new java.awt.Color(51, 153, 255));
-        jButton9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton9.setText("Enviar");
+        bt_enviarcorreo.setBackground(new java.awt.Color(51, 153, 255));
+        bt_enviarcorreo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        bt_enviarcorreo.setText("Enviar");
+        bt_enviarcorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_enviarcorreoActionPerformed(evt);
+            }
+        });
 
         jButton10.setBackground(new java.awt.Color(255, 255, 255));
         jButton10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButton10.setForeground(new java.awt.Color(0, 0, 0));
         jButton10.setText("Descartar");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -755,7 +880,7 @@ public class principal extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jButton9)
+                        .addComponent(bt_enviarcorreo)
                         .addGap(18, 18, 18)
                         .addComponent(jButton10))
                     .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -791,7 +916,7 @@ public class principal extends javax.swing.JFrame {
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_enviarcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
@@ -807,6 +932,9 @@ public class principal extends javax.swing.JFrame {
             .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_modificarDatos.setTitle("Modificacion de Datos");
+        jd_modificarDatos.setUndecorated(true);
+
         jPanel11.setBackground(new java.awt.Color(51, 134, 224));
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -818,7 +946,7 @@ public class principal extends javax.swing.JFrame {
 
         jLabel31.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel31.setText("InLook");
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogoMakr_2RWFEq.png"))); // NOI18N
 
         bt_guardarModificar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         bt_guardarModificar.setText("Guardar");
@@ -846,49 +974,63 @@ public class principal extends javax.swing.JFrame {
         jLabel34.setText("Genero:");
 
         buttonGroup1.add(rb_mModificar);
+        rb_mModificar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         rb_mModificar.setSelected(true);
         rb_mModificar.setText("Masculino");
 
         buttonGroup1.add(rb_fModificar);
+        rb_fModificar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         rb_fModificar.setText("Femenina");
+
+        jButton11.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jButton11.setText("Volver al Inbox");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jl_minimizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jl_salirmodificar)
-                .addGap(4, 4, 4))
+                .addGap(0, 276, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(jl_minimizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jl_salirmodificar)
+                        .addGap(4, 4, 4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addGap(254, 254, 254))))
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel29))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tf_usuarioModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel34)))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(bt_guardarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(jButton11))
+                            .addComponent(jp_contraseñaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(rb_mModificar)
                                 .addGap(18, 18, 18)
-                                .addComponent(rb_fModificar))
-                            .addComponent(tf_usuarioModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jp_contraseñaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(350, 350, 350)
-                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel34))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(374, 374, 374)
-                        .addComponent(bt_guardarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(415, Short.MAX_VALUE))
+                                .addComponent(rb_fModificar)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -896,26 +1038,28 @@ public class principal extends javax.swing.JFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jl_salirmodificar)
                     .addComponent(jl_minimizar))
-                .addGap(54, 54, 54)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel31)
-                .addGap(79, 79, 79)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(tf_usuarioModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel34)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addGap(100, 100, 100)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rb_mModificar)
+                            .addComponent(rb_fModificar))
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jp_contraseñaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel29)))
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_mModificar)
-                        .addComponent(rb_fModificar)))
-                .addGap(60, 60, 60)
-                .addComponent(bt_guardarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                            .addComponent(jLabel29))))
+                .addGap(86, 86, 86)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bt_guardarModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
         );
 
         javax.swing.GroupLayout jd_modificarDatosLayout = new javax.swing.GroupLayout(jd_modificarDatos.getContentPane());
@@ -927,6 +1071,225 @@ public class principal extends javax.swing.JFrame {
         jd_modificarDatosLayout.setVerticalGroup(
             jd_modificarDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        tabla_libretadirecciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        tabla_libretadirecciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Usuario", "Correo", "Genero"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tabla_libretadirecciones);
+
+        jToolBar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        jToolBar2.setRollover(true);
+
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-send-email-48.png"))); // NOI18N
+        jButton12.setFocusable(false);
+        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
+        jToolBar2.add(jButton12);
+
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-create-48.png"))); // NOI18N
+        jButton13.setFocusable(false);
+        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(jButton13);
+
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-table-properties-48.png"))); // NOI18N
+        jButton15.setFocusable(false);
+        jButton15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton15.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(jButton15);
+
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-search-contacts-64.png"))); // NOI18N
+        jButton14.setFocusable(false);
+        jButton14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton14.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(jButton14);
+
+        jButton17.setIcon(new javax.swing.ImageIcon("C:\\Users\\noelg\\Downloads\\icons8-add-list-64.png")); // NOI18N
+        jButton17.setFocusable(false);
+        jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton17.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton17MouseClicked(evt);
+            }
+        });
+        jToolBar2.add(jButton17);
+
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-clear-symbol-64.png"))); // NOI18N
+        jButton18.setText("jButton18");
+        jButton18.setFocusable(false);
+        jButton18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton18.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton18MouseClicked(evt);
+            }
+        });
+        jToolBar2.add(jButton18);
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel12.setText("Enviar correo");
+
+        jLabel24.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel24.setText("Crear grupo");
+
+        jLabel26.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel26.setText("Propíedades");
+
+        jLabel27.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel27.setText("Buscar");
+
+        jButton16.setBackground(new java.awt.Color(255, 255, 255));
+        jButton16.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jButton16.setForeground(new java.awt.Color(0, 102, 255));
+        jButton16.setText("Volver al inbox");
+        jButton16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton16MouseClicked(evt);
+            }
+        });
+
+        jLabel30.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel30.setText("Listar");
+
+        jLabel32.setText("vaciar");
+
+        tf_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tf_buscarKeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel27)
+                                .addGap(46, 46, 46)
+                                .addComponent(jLabel30)
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel32))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGap(349, 349, 349)
+                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 386, Short.MAX_VALUE))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(187, 187, 187)
+                .addComponent(tf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel27)
+                    .addComponent(jLabel30)
+                    .addComponent(jLabel32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jd_libretadireccionesLayout = new javax.swing.GroupLayout(jd_libretadirecciones.getContentPane());
+        jd_libretadirecciones.getContentPane().setLayout(jd_libretadireccionesLayout);
+        jd_libretadireccionesLayout.setHorizontalGroup(
+            jd_libretadireccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_libretadireccionesLayout.setVerticalGroup(
+            jd_libretadireccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jScrollPane4.setViewportView(tp_spam);
+
+        jButton19.setText("Volver al inbox");
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton19MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(418, 418, 418)
+                        .addComponent(jButton19)))
+                .addContainerGap(128, Short.MAX_VALUE))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addContainerGap(173, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton19)
+                .addGap(44, 44, 44))
+        );
+
+        javax.swing.GroupLayout jd_spamLayout = new javax.swing.GroupLayout(jd_spam.getContentPane());
+        jd_spam.getContentPane().setLayout(jd_spamLayout);
+        jd_spamLayout.setHorizontalGroup(
+            jd_spamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_spamLayout.setVerticalGroup(
+            jd_spamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -946,9 +1309,9 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
-        bt_iniciarFrame.setBackground(new java.awt.Color(255, 255, 255));
+        bt_iniciarFrame.setBackground(new java.awt.Color(0, 153, 255));
         bt_iniciarFrame.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        bt_iniciarFrame.setForeground(new java.awt.Color(0, 153, 255));
+        bt_iniciarFrame.setForeground(new java.awt.Color(255, 255, 255));
         bt_iniciarFrame.setText("Iniciar sesion ");
         bt_iniciarFrame.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         bt_iniciarFrame.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1000,7 +1363,7 @@ public class principal extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogramacionii_noelmartinez/inlook.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogoMakr_2RWFEq.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
         jLabel2.setText("Comunicate Facilmente");
@@ -1011,8 +1374,8 @@ public class principal extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 29)); // NOI18N
         jLabel4.setText("Dale uso a esta gran y util herramienta! ");
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 25)); // NOI18N
-        jLabel5.setText("InLook");
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
+        jLabel5.setText("Si aun no tienes una cuenta, Registrate gratis!");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1034,18 +1397,16 @@ public class principal extends javax.swing.JFrame {
                                 .addGap(152, 152, 152)
                                 .addComponent(jLabel4))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(153, Short.MAX_VALUE))
+                        .addGap(224, 224, 224)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(68, 68, 68)
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
@@ -1054,7 +1415,9 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1103,8 +1466,8 @@ public class principal extends javax.swing.JFrame {
     }
 
     private void bt_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarMouseClicked
-        String correo = tf_correo.getText();
         String genero = "";
+        correo = tf_correo.getText();
         if (rb_m.isSelected()) {
             genero = "Masculino";
         } else {
@@ -1118,7 +1481,7 @@ public class principal extends javax.swing.JFrame {
             jd_registro.pack();
             jd_registro.setLocationRelativeTo(this);
             jd_registro.setVisible(false);
-            persona p = new persona(usuario, contraseña, correo);
+            Persona p = new Persona(usuario, contraseña, correo);
             //Agregar
             Dba db = new Dba("./ProyectoProgramacionII.accdb");
             db.conectar();
@@ -1181,6 +1544,7 @@ public class principal extends javax.swing.JFrame {
 
     private void bt_iniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_iniciarSesionMouseClicked
         String usuarioIng = tf_usuarioIng.getText();
+        String correo = tf_correo.getText();
         String contraIng = jp_contraseñaingresada.getText();
         Dba db = new Dba("./ProyectoProgramacionII.accdb");
         db.conectar();
@@ -1200,13 +1564,13 @@ public class principal extends javax.swing.JFrame {
                     jd_inbox.setLocationRelativeTo(this);
                     jd_inbox.setVisible(true);
                     break;
-                } else {
-                    JOptionPane.showMessageDialog(this, "El Usuario o contraseña es incorrecta!", "vuelva a intentarlo", JOptionPane.INFORMATION_MESSAGE);
-
                 }
+                if (!RevisaCorreo(correo)) {
+                    JOptionPane.showMessageDialog(this, "El Usuario o contraseña es incorrecta!", "vuelva a intentarlo", JOptionPane.INFORMATION_MESSAGE);
+                }
+
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         db.desconectar();
 
@@ -1223,7 +1587,6 @@ public class principal extends javax.swing.JFrame {
                 jl_userdentro.setText(rs.getString(1));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         db.desconectar();
     }
@@ -1233,11 +1596,10 @@ public class principal extends javax.swing.JFrame {
         Dba db = new Dba("./ProyectoProgramacionII.accdb");
         db.conectar();
         try {
-            db.query.execute("DELETE FROM Registro WHERE Correo = '"+correoing+"'");
+            db.query.execute("DELETE FROM Registro WHERE Correo = '" + correoing + "'");
             db.commit();
             JOptionPane.showMessageDialog(this, "Se ha eliminado con exito!");
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
         db.desconectar();
 
@@ -1272,7 +1634,7 @@ public class principal extends javax.swing.JFrame {
             StyleConstants.setForeground(estilo, JColorChooser.showDialog(this, "Seleccione un color", Color.RED));
             doc.setCharacterAttributes(tp_texto.getSelectionStart(), tp_texto.getSelectionEnd() - tp_texto.getSelectionStart(),
                     tp_texto.getStyle("miEstilo"), true);
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
         }
     }//GEN-LAST:event_bt_colorletraMouseClicked
 
@@ -1288,7 +1650,7 @@ public class principal extends javax.swing.JFrame {
                     tp_texto.getSelectionEnd() - tp_texto.getSelectionStart(),
                     tp_texto.getStyle("miEstilo"),
                     true);
-        } catch (Exception ex) {
+        } catch (HeadlessException ex) {
         }
     }//GEN-LAST:event_bt_remarcadoMouseClicked
 
@@ -1391,8 +1753,8 @@ public class principal extends javax.swing.JFrame {
         AnimationClass logoutt = new AnimationClass();
         logoutt.jButtonXLeft(10, -130, 10, 5, bt_cerrarsesion);
         AnimationClass eliminarr = new AnimationClass();
-        eliminarr.jButtonXLeft(120, -130, 10, 5, bt_eliminAR);
-        
+        eliminarr.jButtonXLeft(130, -130, 10, 5, bt_eliminAR);
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void bt_guardarModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_guardarModificarMouseClicked
@@ -1410,9 +1772,10 @@ public class principal extends javax.swing.JFrame {
             db.query.execute("UPDATE Registro set Usuario = '" + tf_usuarioModificar.getText() + "' WHERE Usuario = '" + Usuario + "'");
 
             db.commit();
+
             JOptionPane.showMessageDialog(this, "Se modifico con exito!");
+
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         db.desconectar();
     }//GEN-LAST:event_bt_guardarModificarMouseClicked
@@ -1448,12 +1811,396 @@ public class principal extends javax.swing.JFrame {
         jd_inbox.setModal(false);
         jd_inbox.pack();
         jd_inbox.setVisible(false);
-        
+
         this.setVisible(true);
         JOptionPane.showMessageDialog(this, "Haz cerrado sesion con exito, feliz dia!");
         tf_usuarioIng.setText("");
         jp_contraseñaingresada.setText("");
     }//GEN-LAST:event_bt_cerrarsesionMouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        jd_modificarDatos.setModal(false);
+        jd_modificarDatos.pack();
+        jd_modificarDatos.setVisible(false);
+
+        jd_inbox.setModal(true);
+        jd_inbox.pack();
+        jd_inbox.setLocationRelativeTo(this);
+        jd_inbox.setVisible(true);
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        jd_inbox.setModal(false);
+        jd_inbox.pack();
+        jd_inbox.setVisible(false);
+
+        jd_libretadirecciones.setModal(true);
+        jd_libretadirecciones.pack();
+        jd_libretadirecciones.setLocationRelativeTo(this);
+        jd_libretadirecciones.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
+        //Listar
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Usuario");
+        modelo.addColumn("Correo");
+        modelo.addColumn("Genero");
+        tabla_libretadirecciones.setModel(modelo);
+        Dba db = new Dba("./ProyectoProgramacionII.accdb");
+        db.conectar();
+        try {
+            db.query.execute("SELECT Usuario,Correo,Genero from Registro");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                Object[] fila = new Object[3]; // Hay tres columnas en la tabla
+
+                for (int i = 0; i < 3; i++) {
+                    fila[i] = rs.getObject(i + 1); // El primer indice en rs es el 1, no el cero, por eso se suma 1.
+                }
+                // Se añade al modelo la fila completa.
+                modelo.addRow(fila);
+            }
+        } catch (SQLException ex) {
+        }
+        db.desconectar();
+    }//GEN-LAST:event_jButton17MouseClicked
+
+    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+        jd_libretadirecciones.setModal(false);
+        jd_libretadirecciones.pack();
+        jd_libretadirecciones.setVisible(false);
+
+        jd_inbox.setModal(true);
+        jd_inbox.pack();
+        jd_inbox.setLocationRelativeTo(this);
+        jd_inbox.setVisible(true);
+    }//GEN-LAST:event_jButton16MouseClicked
+
+    private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
+        tabla_libretadirecciones.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Usuario", "Correo", "Genero"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
+    }//GEN-LAST:event_jButton18MouseClicked
+
+    public void escribirArchivoInbox() {
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(binarioInbox);
+            bw = new ObjectOutputStream(fw);
+            for (Correo t : listacorreosInbox) {
+                bw.writeObject(t);
+            }
+            bw.flush();
+        } catch (IOException ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception ex) {
+            }
+        }
+    }
+
+    public void escribirArchivoEnviado() {
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(binarioEnviado);
+            bw = new ObjectOutputStream(fw);
+            for (Correo t : listacorreosInbox) {
+                bw.writeObject(t);
+            }
+            bw.flush();
+        } catch (Exception ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+            }
+        }
+    }
+
+    public void escribirArchivoBorradores() {
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(binarioBorradores);
+            bw = new ObjectOutputStream(fw);
+            for (Correo t : listacorreosBorradores) {
+                bw.writeObject(t);
+            }
+            bw.flush();
+        } catch (Exception ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+            }
+        }
+    }
+
+    public void escribirArchivoBasura() {
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(binarioBasura);
+            bw = new ObjectOutputStream(fw);
+            for (Correo t : listacorreosBasura) {
+                bw.writeObject(t);
+            }
+            bw.flush();
+        } catch (IOException ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+            }
+        }
+    }
+
+    public void cargarArchivoInbox() {
+        try {
+            listacorreosInbox = new ArrayList();
+            Correo temp;
+            if (binarioInbox.exists()) {
+                FileInputStream entrada
+                        = new FileInputStream(binarioInbox);
+                ObjectInputStream objeto
+                        = new ObjectInputStream(entrada);
+                try {
+                    while ((temp = (Correo) objeto.readObject()) != null) {
+                        listacorreosInbox.add(temp);
+                    }
+                } catch (EOFException e) {
+                    //encontro el final del archivo
+                }
+                objeto.close();
+                entrada.close();
+            } //fin if           
+        } catch (Exception ex) {
+        }
+    }
+
+    public void cargarArchivoEnviado() {
+        try {
+            listacorreosEnviados = new ArrayList();
+            Correo temp;
+            if (binarioEnviado.exists()) {
+                FileInputStream entrada
+                        = new FileInputStream(binarioEnviado);
+                ObjectInputStream objeto
+                        = new ObjectInputStream(entrada);
+                try {
+                    while ((temp = (Correo) objeto.readObject()) != null) {
+                        listacorreosEnviados.add(temp);
+                    }
+                } catch (EOFException e) {
+                    //encontro el final del archivo
+                }
+                objeto.close();
+                entrada.close();
+            } //fin if           
+        } catch (Exception ex) {
+        }
+    }
+
+    public void cargarArchivoBorradores() {
+        try {
+            listacorreosBorradores = new ArrayList();
+            Correo temp;
+            if (binarioBorradores.exists()) {
+                FileInputStream entrada
+                        = new FileInputStream(binarioBorradores);
+                ObjectInputStream objeto
+                        = new ObjectInputStream(entrada);
+                try {
+                    while ((temp = (Correo) objeto.readObject()) != null) {
+                        listacorreosBorradores.add(temp);
+                    }
+                } catch (EOFException e) {
+                    //encontro el final del archivo
+                }
+                objeto.close();
+                entrada.close();
+            } //fin if           
+        } catch (Exception ex) {
+        }
+    }
+
+    public void cargarArchivoBasura() {
+        try {
+            listacorreosBasura = new ArrayList();
+            Correo temp;
+            if (binarioBasura.exists()) {
+                FileInputStream entrada
+                        = new FileInputStream(binarioBasura);
+                ObjectInputStream objeto
+                        = new ObjectInputStream(entrada);
+                try {
+                    while ((temp = (Correo) objeto.readObject()) != null) {
+                        listacorreosBasura.add(temp);
+                    }
+                } catch (EOFException e) {
+                    //encontro el final del archivo
+                }
+                objeto.close();
+                entrada.close();
+            } //fin if           
+        } catch (Exception ex) {
+        }
+    }
+
+    private void bt_spamInboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_spamInboxMouseClicked
+        jd_inbox.setModal(false);
+        jd_inbox.pack();
+        jd_inbox.setVisible(false);
+
+        jd_spam.setModal(true);
+        jd_spam.pack();
+        jd_spam.setLocationRelativeTo(this);
+        jd_spam.setVisible(true);
+    }//GEN-LAST:event_bt_spamInboxMouseClicked
+
+    private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
+        jd_spam.setModal(false);
+        jd_spam.pack();
+        jd_spam.setVisible(false);
+
+        jd_inbox.setModal(true);
+        jd_inbox.pack();
+        jd_inbox.setLocationRelativeTo(this);
+        jd_inbox.setVisible(true);
+    }//GEN-LAST:event_jButton19MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        if (tabla_libretadirecciones.getSelectedRow() >= 0) {
+            DefaultTableModel tm = (DefaultTableModel) tabla_libretadirecciones.getModel();
+            String correo = String.valueOf(tm.getValueAt(tabla_libretadirecciones.getSelectedRow(), 1));
+            tf_para.setText(correo);
+        }
+        jd_enviocorreos.setModal(true);
+        jd_enviocorreos.pack();
+        jd_enviocorreos.setLocationRelativeTo(this);
+        jd_enviocorreos.setVisible(true);
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        int dialogButton = JOptionPane.showConfirmDialog(this, "Esta seguro que desea descartar este correo? Si es asi pasara a borradores");
+        if (dialogButton == JOptionPane.YES_OPTION) {
+
+        }
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void bt_enviarcorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_enviarcorreoActionPerformed
+        String para = tf_para.getText();
+        String asunto = tp_asunto.getText();
+        String contenido = tp_texto.getText();
+        binarioInbox = new File("./Inbox");
+        binarioEnviado = new File("./Enviados");
+        String path = "Inbox";
+        String path1 = "Enviados";
+        try {
+            cargarArchivoInbox();
+            cargarArchivoEnviado();
+            Correo c = new Correo(para, asunto, contenido, doc, estilo);
+            listacorreosInbox.add(c);
+            listacorreosEnviados.add(c);
+            escribirArchivoInbox();
+            escribirArchivoEnviado();
+            Dba db = new Dba("./ProyectoProgramacionII.accdb");
+            db.conectar();
+            try {
+                db.query.execute("UPDATE Registro set Inbox ='" + path + "' WHERE Correo ='" + para + "'");
+                db.query.execute("UPDATE Registro set Enviados ='" + path1 + "' WHERE Usuario ='" + tf_usuarioIng + "'");
+                db.commit();
+            } catch (SQLException e) {
+            }
+            db.desconectar();
+            JOptionPane.showMessageDialog(this, "El correo ha sido enviado exitosamente");
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Sucedio un error al enviar!");
+        }
+        tp_asunto.setText("");
+        tf_para.setText("");
+        tp_texto.setText("");
+    }//GEN-LAST:event_bt_enviarcorreoActionPerformed
+
+    private void bt_inboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inboxActionPerformed
+        String acceso = "";
+        DefaultTableModel modelo = (DefaultTableModel) tablainbox.getModel();
+        Dba db = new Dba("./ProyectoProgramacionII.accdb");
+        db.conectar();
+        try {
+            db.query.execute("SELECT Enviados FROM Registro WHERE Usuario = '" + tf_usuarioIng + "'");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                acceso = rs.getString(1);
+            }
+        } catch (SQLException e) {
+        }
+        db.desconectar();
+        try {
+            binarioEnviado = new File(acceso);
+            cargarArchivoEnviado();
+        } catch (Exception e) {
+
+        }
+        System.out.println();
+        for (int i = 0; i < listacorreosInbox.size(); i++) {
+            Object[] newrow = {
+                listacorreosInbox.get(i)
+            };
+            modelo.addRow(newrow);
+            //System.out.println(listacorreosInbox.get(i));
+        }
+        tablainbox.setModel(modelo);
+    }//GEN-LAST:event_bt_inboxActionPerformed
+
+    private void bt_chatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_chatsMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_chatsMouseClicked
+
+    private void tablainboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablainboxMouseClicked
+        Correo dato = (Correo) tablainbox.getValueAt(tablainbox.getSelectedRow(), 0);
+        DefaultTableModel modelo = (DefaultTableModel) tablainbox.getModel();
+        tp_asuntoInbox.setText("Para: " + dato.getPara() + "\n" + "Asunto: " + dato.getAsunto());
+        tp_cuerpoinbox.setText(((Correo) dato).getContenido());
+        tp_cuerpoinbox.setDocument(((Correo) dato).getDocumento());
+//        if (tablainbox.getSelectedRow() >= 0 ) {
+//            if (evt.isMetaDown()) {
+//                
+//            }
+//        }
+    }//GEN-LAST:event_tablainboxMouseClicked
+
+    private void tf_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_buscarKeyReleased
+        buscarPersona(tf_buscar.getText());
+    }//GEN-LAST:event_tf_buscarKeyReleased
+    
+    public void buscarPersona(String buscar) {
+        Direcciones logica = new Direcciones();
+
+        DefaultTableModel modelo = logica.buscarPersonas(buscar);
+
+        tabla_libretadirecciones.setModel(modelo);
+
+    }
 
     /**
      * @param args the command line arguments
@@ -1489,16 +2236,30 @@ public class principal extends javax.swing.JFrame {
             }
         });
     }
-    ArrayList<String> Usuarios = new ArrayList();
-    ArrayList<String> Contraseñas = new ArrayList();
-    ArrayList correos = new ArrayList();
     String Usuario;
+    String correo;
+    File binarioInbox = null;
+    File binarioEnviado = null;
+    File binarioBorradores = null;
+    File binarioBasura = null;
+    ArrayList<Correo> listacorreosInbox = new ArrayList();
+    ArrayList<Correo> listacorreosEnviados = new ArrayList();
+    ArrayList<Correo> listacorreosBorradores = new ArrayList();
+    ArrayList<Correo> listacorreosBasura = new ArrayList();
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_basuraInbox;
+    private javax.swing.JButton bt_borradoresInbox;
     private javax.swing.JButton bt_cerrarsesion;
+    private javax.swing.JButton bt_chats;
     private javax.swing.JButton bt_colorletra;
+    private javax.swing.JButton bt_contactosInbox;
+    private javax.swing.JButton bt_correosenviadosInbox;
     private javax.swing.JButton bt_cursiva;
     private javax.swing.JButton bt_eliminAR;
+    private javax.swing.JButton bt_enviarcorreo;
     private javax.swing.JButton bt_guardarModificar;
+    private javax.swing.JButton bt_inbox;
     private javax.swing.JButton bt_iniciarFrame;
     private javax.swing.JButton bt_iniciarSesion;
     private javax.swing.JButton bt_modificar;
@@ -1507,21 +2268,23 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_registrar;
     private javax.swing.JButton bt_remarcado;
     private javax.swing.JButton bt_seleccionar;
+    private javax.swing.JButton bt_spamInbox;
     private javax.swing.JButton bt_subrayado;
+    private javax.swing.JButton bt_tareasInbox;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cb_estiloLetra;
     private javax.swing.JComboBox<String> cb_opciones;
     private javax.swing.JComboBox<String> cb_tamaño;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1538,12 +2301,19 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1552,9 +2322,12 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1565,16 +2338,25 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JDialog jd_enviocorreos;
     private javax.swing.JDialog jd_inbox;
+    private javax.swing.JDialog jd_libretadirecciones;
     private javax.swing.JDialog jd_login;
     private javax.swing.JDialog jd_modificarDatos;
     private javax.swing.JDialog jd_registro;
+    private javax.swing.JDialog jd_spam;
     private javax.swing.JLabel jl_fotoDentro;
     private javax.swing.JLabel jl_minimizar;
     private javax.swing.JLabel jl_salirmodificar;
@@ -1588,12 +2370,18 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_fModificar;
     private javax.swing.JRadioButton rb_m;
     private javax.swing.JRadioButton rb_mModificar;
+    private javax.swing.JTable tabla_libretadirecciones;
+    private javax.swing.JTable tablainbox;
+    private javax.swing.JTextField tf_buscar;
     private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_para;
     private javax.swing.JTextField tf_usuario;
     private javax.swing.JTextField tf_usuarioIng;
     private javax.swing.JTextField tf_usuarioModificar;
     private javax.swing.JTextPane tp_asunto;
+    private javax.swing.JTextPane tp_asuntoInbox;
+    private javax.swing.JTextPane tp_cuerpoinbox;
+    private javax.swing.JTextPane tp_spam;
     private javax.swing.JTextPane tp_texto;
     // End of variables declaration//GEN-END:variables
     StyledDocument doc;
