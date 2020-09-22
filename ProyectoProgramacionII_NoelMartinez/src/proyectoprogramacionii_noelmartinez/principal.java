@@ -124,6 +124,8 @@ public class principal extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         tablainbox = new javax.swing.JTable();
         jLabel35 = new javax.swing.JLabel();
+        bt_gruposinbox = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JSeparator();
         jPanel7 = new javax.swing.JPanel();
         jl_usuario = new javax.swing.JLabel();
         jl_userdentro = new javax.swing.JLabel();
@@ -200,6 +202,69 @@ public class principal extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tp_spam = new javax.swing.JTextPane();
         jButton19 = new javax.swing.JButton();
+        jd_crearGrupo = new javax.swing.JDialog();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        tf_nombregrupo = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        ta_descgrupo = new javax.swing.JTextArea();
+        bt_creargrupo = new javax.swing.JButton();
+        bt_descartargrupo = new javax.swing.JButton();
+        jd_agregarMiembroGrupo = new javax.swing.JDialog();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        lb_grupo = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        cb_aggmiembros = new javax.swing.JComboBox<>();
+        bt_agregarmiembro = new javax.swing.JButton();
+        bt_agregarmastarde = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        jd_paneldegrupo = new javax.swing.JDialog();
+        jPanel16 = new javax.swing.JPanel();
+        jl_NomGrupo = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        bt_abreJDIALOGENVIO = new javax.swing.JButton();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tabla_grupos = new javax.swing.JTable();
+        jSeparator9 = new javax.swing.JSeparator();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tp_contenidogrupo = new javax.swing.JTextPane();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        tp_asuntogrupo = new javax.swing.JTextPane();
+        jLabel46 = new javax.swing.JLabel();
+        cb_miembrosgrupos = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jLabel43 = new javax.swing.JLabel();
+        jSeparator10 = new javax.swing.JSeparator();
+        jLabel47 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        bt_verBandeja = new javax.swing.JButton();
+        jd_enviocorreosgrupos = new javax.swing.JDialog();
+        jPanel17 = new javax.swing.JPanel();
+        jSeparator11 = new javax.swing.JSeparator();
+        jLabel48 = new javax.swing.JLabel();
+        tf_paraGrupo = new javax.swing.JTextField();
+        jLabel49 = new javax.swing.JLabel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        tp_asuntoGrupo = new javax.swing.JTextPane();
+        bt_enviocorreogrupo = new javax.swing.JButton();
+        bt_descartarCorreogrupo = new javax.swing.JButton();
+        jToolBar3 = new javax.swing.JToolBar();
+        cb_estiloLetraGrupo = new javax.swing.JComboBox<>();
+        cb_tamañoGrupo = new javax.swing.JComboBox<>();
+        bt_negritagrupo = new javax.swing.JButton();
+        bt_cursivagrupo = new javax.swing.JButton();
+        bt_subrayadogrupo = new javax.swing.JButton();
+        bt_remarcadogrupo = new javax.swing.JButton();
+        bt_colorletragrupo = new javax.swing.JButton();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        tp_textogrupo = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
         bt_regisframe = new javax.swing.JButton();
         bt_iniciarFrame = new javax.swing.JButton();
@@ -557,11 +622,11 @@ public class principal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Usuario"
+                "Usuario", "Visto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -581,21 +646,23 @@ public class principal extends javax.swing.JFrame {
         jLabel35.setText("Asunto:");
         jPanel8.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
 
+        bt_gruposinbox.setBackground(new java.awt.Color(255, 255, 255));
+        bt_gruposinbox.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_gruposinbox.setForeground(new java.awt.Color(0, 0, 0));
+        bt_gruposinbox.setText("Grupos");
+        bt_gruposinbox.setBorder(null);
+        bt_gruposinbox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_gruposinboxMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(bt_correosenviadosInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(bt_contactosInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(bt_borradoresInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -608,8 +675,24 @@ public class principal extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addComponent(bt_tareasInbox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(bt_correosenviadosInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(bt_contactosInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(bt_borradoresInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                            .addComponent(jSeparator6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_gruposinbox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)))
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -631,6 +714,10 @@ public class principal extends javax.swing.JFrame {
                 .addComponent(bt_contactosInbox)
                 .addGap(34, 34, 34)
                 .addComponent(bt_tareasInbox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bt_gruposinbox)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1073,6 +1160,8 @@ public class principal extends javax.swing.JFrame {
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_libretadirecciones.setTitle("Libreta de direcciones");
+
         tabla_libretadirecciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         tabla_libretadirecciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1110,6 +1199,11 @@ public class principal extends javax.swing.JFrame {
         jButton13.setFocusable(false);
         jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
+            }
+        });
         jToolBar2.add(jButton13);
 
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-table-properties-48.png"))); // NOI18N
@@ -1248,6 +1342,8 @@ public class principal extends javax.swing.JFrame {
             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_spam.setTitle("Bandeja de Spam");
+
         jScrollPane4.setViewportView(tp_spam);
 
         jButton19.setText("Volver al inbox");
@@ -1290,6 +1386,478 @@ public class principal extends javax.swing.JFrame {
         jd_spamLayout.setVerticalGroup(
             jd_spamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_crearGrupo.setTitle("Crear Grupo");
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
+
+        jLabel36.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel36.setText("Nuevo Grupo");
+
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogramacionii_noelmartinez/inongroup.png"))); // NOI18N
+
+        jLabel38.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel38.setText("Nombre del grupo:");
+
+        tf_nombregrupo.setForeground(new java.awt.Color(0, 0, 0));
+        tf_nombregrupo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+
+        jLabel39.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel39.setText("Descripcion:");
+
+        ta_descgrupo.setColumns(20);
+        ta_descgrupo.setRows(5);
+        ta_descgrupo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane8.setViewportView(ta_descgrupo);
+
+        bt_creargrupo.setBackground(new java.awt.Color(255, 255, 255));
+        bt_creargrupo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bt_creargrupo.setForeground(new java.awt.Color(0, 0, 0));
+        bt_creargrupo.setText("Crear");
+        bt_creargrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_creargrupoMouseClicked(evt);
+            }
+        });
+
+        bt_descartargrupo.setBackground(new java.awt.Color(255, 255, 255));
+        bt_descartargrupo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bt_descartargrupo.setForeground(new java.awt.Color(0, 0, 0));
+        bt_descartargrupo.setText("Descartar");
+        bt_descartargrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_descartargrupoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(jLabel36))
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel37)))
+                        .addGap(159, 159, 159)
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel39)
+                            .addComponent(jLabel38)
+                            .addComponent(tf_nombregrupo)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(bt_creargrupo)
+                        .addGap(39, 39, 39)
+                        .addComponent(bt_descartargrupo)))
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_nombregrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel36)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel37)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_creargrupo)
+                    .addComponent(bt_descartargrupo))
+                .addGap(34, 34, 34))
+        );
+
+        javax.swing.GroupLayout jd_crearGrupoLayout = new javax.swing.GroupLayout(jd_crearGrupo.getContentPane());
+        jd_crearGrupo.getContentPane().setLayout(jd_crearGrupoLayout);
+        jd_crearGrupoLayout.setHorizontalGroup(
+            jd_crearGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_crearGrupoLayout.setVerticalGroup(
+            jd_crearGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_agregarMiembroGrupo.setTitle("Agregar Miembro al Grupo");
+
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel40.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel40.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel40.setText("Agregar miembros a");
+
+        lb_grupo.setBackground(new java.awt.Color(255, 255, 255));
+        lb_grupo.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lb_grupo.setForeground(new java.awt.Color(0, 0, 0));
+        lb_grupo.setToolTipText("");
+
+        jLabel41.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel41.setText("Agregar miembros:");
+
+        cb_aggmiembros.setBackground(new java.awt.Color(255, 255, 255));
+        cb_aggmiembros.setForeground(new java.awt.Color(0, 0, 0));
+        cb_aggmiembros.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_aggmiembrosItemStateChanged(evt);
+            }
+        });
+
+        bt_agregarmiembro.setBackground(new java.awt.Color(255, 255, 255));
+        bt_agregarmiembro.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_agregarmiembro.setForeground(new java.awt.Color(0, 0, 0));
+        bt_agregarmiembro.setText("Agregar");
+        bt_agregarmiembro.setEnabled(false);
+        bt_agregarmiembro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarmiembroMouseClicked(evt);
+            }
+        });
+
+        bt_agregarmastarde.setBackground(new java.awt.Color(255, 255, 255));
+        bt_agregarmastarde.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        bt_agregarmastarde.setForeground(new java.awt.Color(0, 0, 0));
+        bt_agregarmastarde.setText("Agregar mas tarde");
+
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogramacionii_noelmartinez/iconoAgg.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_grupo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel42)
+                                    .addComponent(jLabel40))
+                                .addGap(139, 139, 139)
+                                .addComponent(jLabel41)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_aggmiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addComponent(bt_agregarmiembro)
+                        .addGap(73, 73, 73)
+                        .addComponent(bt_agregarmastarde)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel41)
+                    .addComponent(cb_aggmiembros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lb_grupo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_agregarmiembro)
+                    .addComponent(bt_agregarmastarde))
+                .addGap(79, 79, 79))
+        );
+
+        javax.swing.GroupLayout jd_agregarMiembroGrupoLayout = new javax.swing.GroupLayout(jd_agregarMiembroGrupo.getContentPane());
+        jd_agregarMiembroGrupo.getContentPane().setLayout(jd_agregarMiembroGrupoLayout);
+        jd_agregarMiembroGrupoLayout.setHorizontalGroup(
+            jd_agregarMiembroGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_agregarMiembroGrupoLayout.setVerticalGroup(
+            jd_agregarMiembroGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jl_NomGrupo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jl_NomGrupo.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel16.add(jl_NomGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 146, 28));
+        jPanel16.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 298, 12));
+
+        jSeparator8.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel16.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 0, 10, 113));
+
+        bt_abreJDIALOGENVIO.setBackground(new java.awt.Color(255, 255, 255));
+        bt_abreJDIALOGENVIO.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        bt_abreJDIALOGENVIO.setForeground(new java.awt.Color(0, 0, 0));
+        bt_abreJDIALOGENVIO.setText("Enviar Correo al grupo");
+        bt_abreJDIALOGENVIO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_abreJDIALOGENVIOMouseClicked(evt);
+            }
+        });
+        jPanel16.add(bt_abreJDIALOGENVIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+
+        tabla_grupos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
+        tabla_grupos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Usuario", "Visto"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabla_grupos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_gruposMouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(tabla_grupos);
+
+        jPanel16.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 430, 380));
+
+        jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel16.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 10, 560));
+
+        jScrollPane10.setViewportView(tp_contenidogrupo);
+
+        jPanel16.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 400, 140));
+
+        jLabel44.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel44.setText("Detalles");
+        jPanel16.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, 100, -1));
+
+        jLabel45.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel45.setText("Asunto:");
+        jPanel16.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 60, -1));
+
+        jScrollPane11.setViewportView(tp_asuntogrupo);
+
+        jPanel16.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 400, 60));
+
+        jLabel46.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel46.setText("Miembros:");
+        jPanel16.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jPanel16.add(cb_miembrosgrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 180, -1));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("IR");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel16.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 80, -1, -1));
+
+        jLabel43.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel43.setText("Agregar mas miembros:");
+        jPanel16.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 40, -1, -1));
+
+        jSeparator10.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel16.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, 10, 570));
+
+        jLabel47.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel47.setText("Grupo:");
+        jPanel16.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("Volver al Inbox");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel16.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 200, -1, -1));
+
+        bt_verBandeja.setBackground(new java.awt.Color(255, 255, 255));
+        bt_verBandeja.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        bt_verBandeja.setForeground(new java.awt.Color(0, 0, 0));
+        bt_verBandeja.setText("Ver Bandeja de entrada");
+        bt_verBandeja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_verBandejaActionPerformed(evt);
+            }
+        });
+        jPanel16.add(bt_verBandeja, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
+
+        javax.swing.GroupLayout jd_paneldegrupoLayout = new javax.swing.GroupLayout(jd_paneldegrupo.getContentPane());
+        jd_paneldegrupo.getContentPane().setLayout(jd_paneldegrupoLayout);
+        jd_paneldegrupoLayout.setHorizontalGroup(
+            jd_paneldegrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, 1196, Short.MAX_VALUE)
+        );
+        jd_paneldegrupoLayout.setVerticalGroup(
+            jd_paneldegrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel17.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 65, 720, 10));
+
+        jLabel48.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel48.setText("Para:");
+        jPanel17.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 25, -1, -1));
+        jPanel17.add(tf_paraGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 18, 652, 31));
+
+        jLabel49.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel49.setText("Asunto:");
+        jPanel17.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 85, -1, -1));
+
+        jScrollPane12.setViewportView(tp_asuntoGrupo);
+
+        jPanel17.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 93, 652, 58));
+
+        bt_enviocorreogrupo.setBackground(new java.awt.Color(51, 153, 255));
+        bt_enviocorreogrupo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        bt_enviocorreogrupo.setText("Enviar");
+        bt_enviocorreogrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_enviocorreogrupoMouseClicked(evt);
+            }
+        });
+        jPanel17.add(bt_enviocorreogrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, 37));
+
+        bt_descartarCorreogrupo.setBackground(new java.awt.Color(255, 255, 255));
+        bt_descartarCorreogrupo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        bt_descartarCorreogrupo.setForeground(new java.awt.Color(0, 0, 0));
+        bt_descartarCorreogrupo.setText("Descartar");
+        bt_descartarCorreogrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_descartarCorreogrupoMouseClicked(evt);
+            }
+        });
+        jPanel17.add(bt_descartarCorreogrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, -1, 37));
+
+        jToolBar3.setRollover(true);
+
+        cb_estiloLetraGrupo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_estiloLetraGrupoItemStateChanged(evt);
+            }
+        });
+        jToolBar3.add(cb_estiloLetraGrupo);
+
+        cb_tamañoGrupo.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cb_tamañoGrupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "18", "24", "36", "48", "60", "72" }));
+        cb_tamañoGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_tamañoGrupoActionPerformed(evt);
+            }
+        });
+        jToolBar3.add(cb_tamañoGrupo);
+
+        bt_negritagrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/negrita.png"))); // NOI18N
+        bt_negritagrupo.setFocusable(false);
+        bt_negritagrupo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_negritagrupo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bt_negritagrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_negritagrupoMouseClicked(evt);
+            }
+        });
+        jToolBar3.add(bt_negritagrupo);
+
+        bt_cursivagrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cursiva.png"))); // NOI18N
+        bt_cursivagrupo.setFocusable(false);
+        bt_cursivagrupo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_cursivagrupo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bt_cursivagrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_cursivagrupoMouseClicked(evt);
+            }
+        });
+        jToolBar3.add(bt_cursivagrupo);
+
+        bt_subrayadogrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Subrayado.png"))); // NOI18N
+        bt_subrayadogrupo.setToolTipText("");
+        bt_subrayadogrupo.setFocusable(false);
+        bt_subrayadogrupo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_subrayadogrupo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bt_subrayadogrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_subrayadogrupoMouseClicked(evt);
+            }
+        });
+        jToolBar3.add(bt_subrayadogrupo);
+
+        bt_remarcadogrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo.png"))); // NOI18N
+        bt_remarcadogrupo.setFocusable(false);
+        bt_remarcadogrupo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_remarcadogrupo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bt_remarcadogrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_remarcadogrupoMouseClicked(evt);
+            }
+        });
+        jToolBar3.add(bt_remarcadogrupo);
+
+        bt_colorletragrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/letra.png"))); // NOI18N
+        bt_colorletragrupo.setFocusable(false);
+        bt_colorletragrupo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_colorletragrupo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bt_colorletragrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_colorletragrupoMouseClicked(evt);
+            }
+        });
+        jToolBar3.add(bt_colorletragrupo);
+
+        jPanel17.add(jToolBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 720, 48));
+
+        jScrollPane14.setViewportView(tp_textogrupo);
+
+        jPanel17.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 690, 190));
+
+        javax.swing.GroupLayout jd_enviocorreosgruposLayout = new javax.swing.GroupLayout(jd_enviocorreosgrupos.getContentPane());
+        jd_enviocorreosgrupos.getContentPane().setLayout(jd_enviocorreosgruposLayout);
+        jd_enviocorreosgruposLayout.setHorizontalGroup(
+            jd_enviocorreosgruposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
+        );
+        jd_enviocorreosgruposLayout.setVerticalGroup(
+            jd_enviocorreosgruposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1523,7 +2091,6 @@ public class principal extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         db.desconectar();
         return false;
@@ -1934,6 +2501,46 @@ public class principal extends javax.swing.JFrame {
         }
     }
 
+    public void escribirArchivoGrupos() {
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(binarioGrupo);
+            bw = new ObjectOutputStream(fw);
+            for (Grupos t : listaGrupos) {
+                bw.writeObject(t);
+            }
+            bw.flush();
+        } catch (Exception ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+            }
+        }
+    }
+
+    public void escribirArchivoMiembro() {
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(binarioMiembrosGrupo);
+            bw = new ObjectOutputStream(fw);
+            for (CorreoGrupos t : listaMiembros) {
+                bw.writeObject(t);
+            }
+            bw.flush();
+        } catch (IOException ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception ex) {
+            }
+        }
+    }
+
     public void escribirArchivoBorradores() {
         FileOutputStream fw = null;
         ObjectOutputStream bw = null;
@@ -2066,6 +2673,76 @@ public class principal extends javax.swing.JFrame {
         }
     }
 
+    public void cargarArchivoGrupo() {
+        try {
+            listaGrupos = new ArrayList();
+            Grupos temp;
+            if (binarioGrupo.exists()) {
+                FileInputStream entrada
+                        = new FileInputStream(binarioGrupo);
+                ObjectInputStream objeto
+                        = new ObjectInputStream(entrada);
+                try {
+                    while ((temp = (Grupos) objeto.readObject()) != null) {
+                        listaGrupos.add(temp);
+                    }
+                } catch (EOFException e) {
+                    //encontro el final del archivo
+                }
+                objeto.close();
+                entrada.close();
+            } //fin if           
+        } catch (Exception ex) {
+        }
+    }
+
+    public void cargarArchivoMiembroGrupo() {
+        try {
+            listaGrupos = new ArrayList();
+            Grupos temp;
+            if (binarioGrupo.exists()) {
+                FileInputStream entrada
+                        = new FileInputStream(binarioGrupo);
+                ObjectInputStream objeto
+                        = new ObjectInputStream(entrada);
+                try {
+                    while ((temp = (Grupos) objeto.readObject()) != null) {
+                        listaGrupos.add(temp);
+                    }
+                } catch (EOFException e) {
+                    //encontro el final del archivo
+                }
+                objeto.close();
+                entrada.close();
+            } //fin if           
+        } catch (Exception ex) {
+        }
+    }
+
+    public void cargarArchivoMiembro() {
+        try {
+            listaMiembros = new ArrayList();
+            CorreoGrupos temp;
+            if (binarioMiembrosGrupo.exists()) {
+                FileInputStream entrada
+                        = new FileInputStream(binarioMiembrosGrupo);
+                ObjectInputStream objeto
+                        = new ObjectInputStream(entrada);
+                try {
+                    while ((temp = (CorreoGrupos) objeto.readObject()) != null) {
+                        listaMiembros.add(temp);
+                    }
+                } catch (EOFException e) {
+                    //encontro el final del archivo
+                }
+                objeto.close();
+                entrada.close();
+            } //fin if           
+        } catch (Exception ex) {
+        }
+    }
+
+
     private void bt_spamInboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_spamInboxMouseClicked
         jd_inbox.setModal(false);
         jd_inbox.pack();
@@ -2113,6 +2790,8 @@ public class principal extends javax.swing.JFrame {
         String contenido = tp_texto.getText();
         binarioInbox = new File("./Inbox");
         binarioEnviado = new File("./Enviados");
+        MiembrosGrupoBin = new File("./Miembros");
+        File experiment = new File("./Testing");
         String path = "Inbox";
         String path1 = "Enviados";
         try {
@@ -2192,7 +2871,314 @@ public class principal extends javax.swing.JFrame {
     private void tf_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_buscarKeyReleased
         buscarPersona(tf_buscar.getText());
     }//GEN-LAST:event_tf_buscarKeyReleased
-    
+
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        jd_libretadirecciones.setModal(false);
+        jd_libretadirecciones.pack();
+        jd_libretadirecciones.setVisible(false);
+
+        jd_crearGrupo.setModal(true);
+        jd_crearGrupo.pack();
+        jd_crearGrupo.setLocationRelativeTo(this);
+        jd_crearGrupo.setVisible(true);
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    private void bt_descartargrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_descartargrupoMouseClicked
+        jd_crearGrupo.setModal(false);
+        jd_crearGrupo.pack();
+        jd_crearGrupo.setVisible(false);
+
+        jd_libretadirecciones.setModal(true);
+        jd_libretadirecciones.pack();
+        jd_libretadirecciones.setLocationRelativeTo(this);
+        jd_libretadirecciones.setVisible(true);
+    }//GEN-LAST:event_bt_descartargrupoMouseClicked
+
+    private void bt_creargrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_creargrupoMouseClicked
+        String nomGrupo = tf_nombregrupo.getText();
+        String descGrupo = ta_descgrupo.getText();
+        binarioGrupo = new File("./Grupos");
+        String path = "Grupos";
+        try {
+            cargarArchivoGrupo();
+            Grupos g = new Grupos(nomGrupo, descGrupo);
+            listaGrupos.add(g);
+            escribirArchivoGrupos();
+            Dba db = new Dba("./ProyectoProgramacionII.accdb");
+            db.conectar();
+            try {
+                db.query.execute("UPDATE Registro set Grupos ='" + path + "' WHERE Correo ='" + nomGrupo + "'");
+                db.commit();
+                db.query.execute("SELECT Correo FROM Registro");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    cb_aggmiembros.addItem(rs.getString(1));
+                }
+            } catch (SQLException e) {
+            }
+            db.desconectar();
+            JOptionPane.showMessageDialog(this, "El Grupo se ha creado con exito!");
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Sucedio un error al crearse!");
+        }
+        ta_descgrupo.setText("");
+        lb_grupo.setText(tf_nombregrupo.getText());
+
+        jd_crearGrupo.setModal(false);
+        jd_crearGrupo.pack();
+        jd_crearGrupo.setVisible(false);
+
+        jd_agregarMiembroGrupo.setModal(true);
+        jd_agregarMiembroGrupo.pack();
+        jd_agregarMiembroGrupo.setLocationRelativeTo(this);
+        jd_agregarMiembroGrupo.setVisible(true);
+
+    }//GEN-LAST:event_bt_creargrupoMouseClicked
+
+    private void bt_agregarmiembroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarmiembroMouseClicked
+        String path = "CorreoGrupo";
+        correo = cb_aggmiembros.getSelectedItem().toString();
+        int n = cb_aggmiembros.getSelectedIndex();
+        int c = 0;
+        if (cb_aggmiembros.getSelectedIndex() >= 0) {
+            //Agregar
+            Dba db = new Dba("./ProyectoProgramacionII.accdb");
+            db.conectar();
+            try {
+                db.query.execute("UPDATE Registro set CorreosGrupos ='" + path + "' WHERE Correo ='" + correo + "'");
+                db.commit();
+                db.query.execute("SELECT CorreosGrupos FROM Registro");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    if (n == c) {
+                        cb_miembrosgrupos.addItem(correo);
+                        jl_NomGrupo.setText(tf_nombregrupo.getText());
+                    }
+                    c++;
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+            JOptionPane.showMessageDialog(this, "Miembro agregado con exito");
+
+            jd_agregarMiembroGrupo.setModal(false);
+            jd_agregarMiembroGrupo.pack();
+            jd_agregarMiembroGrupo.setVisible(false);
+
+            jd_paneldegrupo.setModal(true);
+            jd_paneldegrupo.pack();
+            jd_paneldegrupo.setLocationRelativeTo(this);
+            jd_paneldegrupo.setVisible(true);
+        }
+    }//GEN-LAST:event_bt_agregarmiembroMouseClicked
+
+    private void bt_abreJDIALOGENVIOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_abreJDIALOGENVIOMouseClicked
+        jd_enviocorreos.setModal(true);
+        jd_enviocorreos.pack();
+        jd_enviocorreos.setLocationRelativeTo(this);
+        jd_enviocorreos.setVisible(true);
+
+    }//GEN-LAST:event_bt_abreJDIALOGENVIOMouseClicked
+
+    private void cb_aggmiembrosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_aggmiembrosItemStateChanged
+        bt_agregarmiembro.setEnabled(true);
+    }//GEN-LAST:event_cb_aggmiembrosItemStateChanged
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        jd_paneldegrupo.setModal(false);
+        jd_paneldegrupo.pack();
+        jd_paneldegrupo.setVisible(false);
+
+        jd_agregarMiembroGrupo.setModal(true);
+        jd_agregarMiembroGrupo.pack();
+        jd_agregarMiembroGrupo.setLocationRelativeTo(this);
+        jd_agregarMiembroGrupo.setVisible(true);
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void cb_estiloLetraGrupoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_estiloLetraGrupoItemStateChanged
+        StyleConstants.setFontFamily(estilo, cb_estiloLetraGrupo.getSelectedItem().toString());
+        //StyleConstants.setFontSize(estilo, Integer.parseInt(cb_tamaño.getSelectedItem().toString()));
+        doc.setCharacterAttributes(tp_textogrupo.getSelectionStart(),
+                tp_textogrupo.getSelectionEnd() - tp_textogrupo.getSelectionStart(),
+                tp_textogrupo.getStyle("miEstilo"),
+                true);
+    }//GEN-LAST:event_cb_estiloLetraGrupoItemStateChanged
+
+    private void cb_tamañoGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tamañoGrupoActionPerformed
+        StyleConstants.setFontSize(estilo, Integer.parseInt(cb_tamañoGrupo.getSelectedItem().toString()));
+        doc.setCharacterAttributes(tp_textogrupo.getSelectionStart(),
+                tp_textogrupo.getSelectionEnd() - tp_textogrupo.getSelectionStart(),
+                tp_textogrupo.getStyle("miEstilo"),
+                true);
+    }//GEN-LAST:event_cb_tamañoGrupoActionPerformed
+
+    private void bt_negritagrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_negritagrupoMouseClicked
+        try {
+            StyleConstants.setBold(estilo, true);
+
+            doc.setCharacterAttributes(tp_textogrupo.getSelectionStart(),
+                    tp_textogrupo.getSelectionEnd() - tp_textogrupo.getSelectionStart(),
+                    tp_textogrupo.getStyle("miEstilo"),
+                    true);
+        } catch (Exception ex) {
+        }
+    }//GEN-LAST:event_bt_negritagrupoMouseClicked
+
+    private void bt_cursivagrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cursivagrupoMouseClicked
+        try {
+            StyleConstants.setItalic(estilo, true);
+
+            doc.setCharacterAttributes(tp_textogrupo.getSelectionStart(),
+                    tp_textogrupo.getSelectionEnd() - tp_textogrupo.getSelectionStart(),
+                    tp_textogrupo.getStyle("miEstilo"),
+                    true);
+        } catch (Exception ex) {
+        }
+    }//GEN-LAST:event_bt_cursivagrupoMouseClicked
+
+    private void bt_subrayadogrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_subrayadogrupoMouseClicked
+        try {
+            StyleConstants.setUnderline(estilo, true);
+
+            doc.setCharacterAttributes(tp_textogrupo.getSelectionStart(),
+                    tp_textogrupo.getSelectionEnd() - tp_textogrupo.getSelectionStart(),
+                    tp_textogrupo.getStyle("miEstilo"),
+                    true);
+        } catch (Exception ex) {
+        }
+    }//GEN-LAST:event_bt_subrayadogrupoMouseClicked
+
+    private void bt_remarcadogrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_remarcadogrupoMouseClicked
+        try {
+
+            StyleConstants.setBackground(estilo,
+                    JColorChooser.showDialog(this,
+                            "Seleccione Color", Color.yellow)
+            );
+
+            doc.setCharacterAttributes(tp_textogrupo.getSelectionStart(),
+                    tp_textogrupo.getSelectionEnd() - tp_textogrupo.getSelectionStart(),
+                    tp_textogrupo.getStyle("miEstilo"),
+                    true);
+        } catch (HeadlessException ex) {
+        }
+    }//GEN-LAST:event_bt_remarcadogrupoMouseClicked
+
+    private void bt_colorletragrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_colorletragrupoMouseClicked
+        try {
+            StyleConstants.setForeground(estilo, JColorChooser.showDialog(this, "Seleccione un color", Color.RED));
+            doc.setCharacterAttributes(tp_textogrupo.getSelectionStart(), tp_textogrupo.getSelectionEnd() - tp_textogrupo.getSelectionStart(),
+                    tp_textogrupo.getStyle("miEstilo"), true);
+        } catch (HeadlessException e) {
+        }
+    }//GEN-LAST:event_bt_colorletragrupoMouseClicked
+
+    private void bt_descartarCorreogrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_descartarCorreogrupoMouseClicked
+        jd_paneldegrupo.setModal(true);
+        jd_paneldegrupo.pack();
+        jd_paneldegrupo.setLocationRelativeTo(this);
+        jd_paneldegrupo.setVisible(true);
+
+        jd_enviocorreosgrupos.setModal(false);
+        jd_enviocorreosgrupos.pack();
+        jd_enviocorreosgrupos.setVisible(false);
+    }//GEN-LAST:event_bt_descartarCorreogrupoMouseClicked
+
+    private void tabla_gruposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_gruposMouseClicked
+        CorreoGrupos dato = (CorreoGrupos) tabla_grupos.getValueAt(tabla_grupos.getSelectedRow(), 0);
+        DefaultTableModel modelo = (DefaultTableModel) tabla_grupos.getModel();
+        tp_asuntoGrupo.setText("Para: " + dato.getParaGrupo() + "\n" + "Asunto: " + dato.getAsuntoGrupo());
+        tp_contenidogrupo.setText(((CorreoGrupos) dato).getContenidoGrupo());
+        tp_contenidogrupo.setDocument(((CorreoGrupos) dato).getDocumentoGrupo());
+//        if (tablainbox.getSelectedRow() >= 0 ) {
+//            if (evt.isMetaDown()) {
+//                
+//            }
+//        }
+
+    }//GEN-LAST:event_tabla_gruposMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jd_paneldegrupo.setModal(false);
+        jd_paneldegrupo.pack();
+        jd_paneldegrupo.setVisible(false);
+
+        jd_inbox.setModal(true);
+        jd_inbox.pack();
+        jd_inbox.setLocationRelativeTo(this);
+        jd_inbox.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void bt_gruposinboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_gruposinboxMouseClicked
+        jd_inbox.setModal(false);
+        jd_inbox.pack();
+        jd_inbox.setVisible(false);
+
+        jd_paneldegrupo.setModal(true);
+        jd_paneldegrupo.pack();
+        jd_paneldegrupo.setLocationRelativeTo(this);
+        jd_paneldegrupo.setVisible(true);
+    }//GEN-LAST:event_bt_gruposinboxMouseClicked
+
+    private void bt_verBandejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_verBandejaActionPerformed
+        String acceso = "";
+        DefaultTableModel modelo = (DefaultTableModel) tabla_grupos.getModel();
+        Dba db = new Dba("./ProyectoProgramacionII.accdb");
+        db.conectar();
+        try {
+            db.query.execute("SELECT CorreoGrupos FROM Registro WHERE Usuario = '" + tf_usuarioIng + "'");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                acceso = rs.getString(1);
+            }
+        } catch (SQLException e) {
+        }
+        db.desconectar();
+        try {
+            binarioMiembrosGrupo = new File(acceso);
+            cargarArchivoMiembro();
+        } catch (Exception e) {
+
+        }
+        for (int i = 0; i < listaMiembros.size(); i++) {
+            Object[] newrow = {
+                listaMiembros.get(i)
+            };
+            modelo.addRow(newrow);
+            //System.out.println(listacorreosInbox.get(i));
+        }
+        tabla_grupos.setModel(modelo);
+    }//GEN-LAST:event_bt_verBandejaActionPerformed
+
+    private void bt_enviocorreogrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_enviocorreogrupoMouseClicked
+        String para = tf_paraGrupo.getText();
+        String asunto = tp_asuntoGrupo.getText();
+        String contenido = tp_contenidogrupo.getText();
+        String UsuarioIng = tf_usuarioIng.getText();
+        binarioMiembrosGrupo = new File("./MiembrosGrupo");
+        String path = "MiembrosGrupos";
+        try {
+            cargarArchivoMiembro();
+            CorreoGrupos cg = new CorreoGrupos(para, asunto, contenido, doc, estilo);
+            listaMiembros.add(cg);
+            escribirArchivoMiembro();
+            Dba db = new Dba("./ProyectoProgramacionII.accdb");
+            db.conectar();
+            try {
+                db.query.execute("UPDATE Registro set CorreosGrupos ='" + path + "' WHERE Correo ='" + UsuarioIng + "'");
+                db.commit();
+            } catch (SQLException e) {
+            }
+            db.desconectar();
+            JOptionPane.showMessageDialog(this, "El Mensaje se ha enviado con exito!");
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Sucedio un error al crearse!");
+        }
+    }//GEN-LAST:event_bt_enviocorreogrupoMouseClicked
+
     public void buscarPersona(String buscar) {
         Direcciones logica = new Direcciones();
 
@@ -2242,39 +3228,63 @@ public class principal extends javax.swing.JFrame {
     File binarioEnviado = null;
     File binarioBorradores = null;
     File binarioBasura = null;
+    File binarioGrupo = null;
+    File MiembrosGrupoBin = null;
+    File binarioMiembrosGrupo = null;
     ArrayList<Correo> listacorreosInbox = new ArrayList();
     ArrayList<Correo> listacorreosEnviados = new ArrayList();
     ArrayList<Correo> listacorreosBorradores = new ArrayList();
     ArrayList<Correo> listacorreosBasura = new ArrayList();
+    ArrayList<Grupos> listaGrupos = new ArrayList();
+    ArrayList<CorreoGrupos> listaMiembros = new ArrayList();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_abreJDIALOGENVIO;
+    private javax.swing.JButton bt_agregarmastarde;
+    private javax.swing.JButton bt_agregarmiembro;
     private javax.swing.JButton bt_basuraInbox;
     private javax.swing.JButton bt_borradoresInbox;
     private javax.swing.JButton bt_cerrarsesion;
     private javax.swing.JButton bt_chats;
     private javax.swing.JButton bt_colorletra;
+    private javax.swing.JButton bt_colorletragrupo;
     private javax.swing.JButton bt_contactosInbox;
     private javax.swing.JButton bt_correosenviadosInbox;
+    private javax.swing.JButton bt_creargrupo;
     private javax.swing.JButton bt_cursiva;
+    private javax.swing.JButton bt_cursivagrupo;
+    private javax.swing.JButton bt_descartarCorreogrupo;
+    private javax.swing.JButton bt_descartargrupo;
     private javax.swing.JButton bt_eliminAR;
     private javax.swing.JButton bt_enviarcorreo;
+    private javax.swing.JButton bt_enviocorreogrupo;
+    private javax.swing.JButton bt_gruposinbox;
     private javax.swing.JButton bt_guardarModificar;
     private javax.swing.JButton bt_inbox;
     private javax.swing.JButton bt_iniciarFrame;
     private javax.swing.JButton bt_iniciarSesion;
     private javax.swing.JButton bt_modificar;
     private javax.swing.JButton bt_negrita;
+    private javax.swing.JButton bt_negritagrupo;
     private javax.swing.JButton bt_regisframe;
     private javax.swing.JButton bt_registrar;
     private javax.swing.JButton bt_remarcado;
+    private javax.swing.JButton bt_remarcadogrupo;
     private javax.swing.JButton bt_seleccionar;
     private javax.swing.JButton bt_spamInbox;
     private javax.swing.JButton bt_subrayado;
+    private javax.swing.JButton bt_subrayadogrupo;
     private javax.swing.JButton bt_tareasInbox;
+    private javax.swing.JButton bt_verBandeja;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cb_aggmiembros;
     private javax.swing.JComboBox<String> cb_estiloLetra;
+    private javax.swing.JComboBox<String> cb_estiloLetraGrupo;
+    private javax.swing.JComboBox<String> cb_miembrosgrupos;
     private javax.swing.JComboBox<String> cb_opciones;
     private javax.swing.JComboBox<String> cb_tamaño;
+    private javax.swing.JComboBox<String> cb_tamañoGrupo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -2285,6 +3295,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2314,7 +3325,21 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2328,6 +3353,10 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2337,26 +3366,44 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JToolBar jToolBar3;
+    private javax.swing.JDialog jd_agregarMiembroGrupo;
+    private javax.swing.JDialog jd_crearGrupo;
     private javax.swing.JDialog jd_enviocorreos;
+    private javax.swing.JDialog jd_enviocorreosgrupos;
     private javax.swing.JDialog jd_inbox;
     private javax.swing.JDialog jd_libretadirecciones;
     private javax.swing.JDialog jd_login;
     private javax.swing.JDialog jd_modificarDatos;
+    private javax.swing.JDialog jd_paneldegrupo;
     private javax.swing.JDialog jd_registro;
     private javax.swing.JDialog jd_spam;
+    private javax.swing.JLabel jl_NomGrupo;
     private javax.swing.JLabel jl_fotoDentro;
     private javax.swing.JLabel jl_minimizar;
     private javax.swing.JLabel jl_salirmodificar;
@@ -2366,23 +3413,32 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPasswordField jp_contraseña;
     private javax.swing.JPasswordField jp_contraseñaModificar;
     private javax.swing.JPasswordField jp_contraseñaingresada;
+    private javax.swing.JLabel lb_grupo;
     private javax.swing.JRadioButton rb_f;
     private javax.swing.JRadioButton rb_fModificar;
     private javax.swing.JRadioButton rb_m;
     private javax.swing.JRadioButton rb_mModificar;
+    private javax.swing.JTextArea ta_descgrupo;
+    private javax.swing.JTable tabla_grupos;
     private javax.swing.JTable tabla_libretadirecciones;
     private javax.swing.JTable tablainbox;
     private javax.swing.JTextField tf_buscar;
     private javax.swing.JTextField tf_correo;
+    private javax.swing.JTextField tf_nombregrupo;
     private javax.swing.JTextField tf_para;
+    private javax.swing.JTextField tf_paraGrupo;
     private javax.swing.JTextField tf_usuario;
     private javax.swing.JTextField tf_usuarioIng;
     private javax.swing.JTextField tf_usuarioModificar;
     private javax.swing.JTextPane tp_asunto;
+    private javax.swing.JTextPane tp_asuntoGrupo;
     private javax.swing.JTextPane tp_asuntoInbox;
+    private javax.swing.JTextPane tp_asuntogrupo;
+    private javax.swing.JTextPane tp_contenidogrupo;
     private javax.swing.JTextPane tp_cuerpoinbox;
     private javax.swing.JTextPane tp_spam;
     private javax.swing.JTextPane tp_texto;
+    private javax.swing.JTextPane tp_textogrupo;
     // End of variables declaration//GEN-END:variables
     StyledDocument doc;
     Style estilo;
