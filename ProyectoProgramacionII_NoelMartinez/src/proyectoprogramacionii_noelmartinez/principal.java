@@ -6,7 +6,6 @@
 package proyectoprogramacionii_noelmartinez;
 
 import AppPackage.AnimationClass;
-import com.sun.glass.events.ViewEvent;
 import java.awt.Color;
 import java.awt.GraphicsEnvironment;
 import java.awt.HeadlessException;
@@ -298,8 +297,6 @@ public class principal extends javax.swing.JFrame {
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jdate_inicio = new com.toedter.calendar.JDateChooser();
-        jdate_finalizar = new com.toedter.calendar.JDateChooser();
         jScrollPane10 = new javax.swing.JScrollPane();
         jp_ReunionesPane = new javax.swing.JTextPane();
         jButton3 = new javax.swing.JButton();
@@ -307,6 +304,8 @@ public class principal extends javax.swing.JFrame {
         cb_finalizareunion = new javax.swing.JComboBox<>();
         sp_inicioreunion = new javax.swing.JSpinner();
         sp_finalreunion = new javax.swing.JSpinner();
+        jdate_inicio = new com.toedter.calendar.JDateChooser();
+        jdate_finalizar = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         bt_regisframe = new javax.swing.JButton();
         bt_iniciarFrame = new javax.swing.JButton();
@@ -1995,10 +1994,6 @@ public class principal extends javax.swing.JFrame {
         jCheckBox1.setText("Todo el dia");
         jPanel18.add(jCheckBox1);
         jCheckBox1.setBounds(790, 190, 90, 23);
-        jPanel18.add(jdate_inicio);
-        jdate_inicio.setBounds(280, 190, 130, 19);
-        jPanel18.add(jdate_finalizar);
-        jdate_finalizar.setBounds(280, 250, 130, 19);
 
         jScrollPane10.setViewportView(jp_ReunionesPane);
 
@@ -2033,6 +2028,10 @@ public class principal extends javax.swing.JFrame {
         sp_finalreunion.setModel(new javax.swing.SpinnerListModel(new String[] {"AM", "PM"}));
         jPanel18.add(sp_finalreunion);
         sp_finalreunion.setBounds(626, 250, 50, 20);
+        jPanel18.add(jdate_inicio);
+        jdate_inicio.setBounds(280, 190, 130, 19);
+        jPanel18.add(jdate_finalizar);
+        jdate_finalizar.setBounds(280, 250, 130, 19);
 
         javax.swing.GroupLayout jd_editorReunionesLayout = new javax.swing.GroupLayout(jd_editorReuniones.getContentPane());
         jd_editorReuniones.getContentPane().setLayout(jd_editorReunionesLayout);
