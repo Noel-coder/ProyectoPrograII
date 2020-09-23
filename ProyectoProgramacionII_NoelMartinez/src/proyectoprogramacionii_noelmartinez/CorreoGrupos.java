@@ -20,7 +20,7 @@ public class CorreoGrupos implements Serializable {
     private StyledDocument documentoGrupo;
     private Style estiloGrupo;
     
-    private static final long SerialVersionUID = 888L;
+    private static final long SerialVersionUID = 777L;
 
     public CorreoGrupos() {
     }
