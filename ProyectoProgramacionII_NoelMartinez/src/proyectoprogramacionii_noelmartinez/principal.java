@@ -82,21 +82,6 @@ public class principal extends javax.swing.JFrame {
         }
         cb_estiloLetraGrupo.setModel(modelo2);
 
-        Date fecha = new Date();
-        SpinnerDateModel sm
-                = new SpinnerDateModel(fecha, null, null, Calendar.HOUR_OF_DAY);
-        jSpinner1 = new javax.swing.JSpinner(sm);
-        JSpinner.DateEditor de = new JSpinner.DateEditor(jSpinner1, "HH:mm:ss a");
-
-        jSpinner1.setEditor(de);
-
-        Date fecha2 = new Date();
-        SpinnerDateModel sm2
-                = new SpinnerDateModel(fecha2, null, null, Calendar.HOUR_OF_DAY);
-        jSpinner2 = new javax.swing.JSpinner(sm2);
-        JSpinner.DateEditor de2 = new JSpinner.DateEditor(jSpinner2, "HH:mm:ss a");
-
-        jSpinner2.setEditor(de2);
     }
 
     /**
@@ -141,7 +126,6 @@ public class principal extends javax.swing.JFrame {
         bt_inbox = new javax.swing.JButton();
         bt_chats = new javax.swing.JButton();
         bt_correosenviadosInbox = new javax.swing.JButton();
-        bt_spamInbox = new javax.swing.JButton();
         bt_tareasInbox = new javax.swing.JButton();
         bt_borradoresInbox = new javax.swing.JButton();
         bt_basuraInbox = new javax.swing.JButton();
@@ -168,11 +152,17 @@ public class principal extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         cb_opciones = new javax.swing.JComboBox<>();
+        jButton4 = new javax.swing.JButton();
+        jSeparator13 = new javax.swing.JSeparator();
+        jSeparator14 = new javax.swing.JSeparator();
+        bt_eliminarpermanentecorreo = new javax.swing.JButton();
+        jSeparator15 = new javax.swing.JSeparator();
         jMenuBar2 = new javax.swing.JMenuBar();
         jm_editarcuenta = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jd_enviocorreos = new javax.swing.JDialog();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -308,18 +298,15 @@ public class principal extends javax.swing.JFrame {
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        Date date = new Date();
-        SpinnerDateModel sm =
-        new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
-        jSpinner1 = new javax.swing.JSpinner(sm);
+        jdate_inicio = new com.toedter.calendar.JDateChooser();
+        jdate_finalizar = new com.toedter.calendar.JDateChooser();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        Date date2 = new Date();
-        SpinnerDateModel sm2 =
-        new SpinnerDateModel(date2, null, null, Calendar.HOUR_OF_DAY);
-        jSpinner2 = new javax.swing.JSpinner(sm2);
+        jp_ReunionesPane = new javax.swing.JTextPane();
+        jButton3 = new javax.swing.JButton();
+        cb_inicioReunion = new javax.swing.JComboBox<>();
+        cb_finalizareunion = new javax.swing.JComboBox<>();
+        sp_inicioreunion = new javax.swing.JSpinner();
+        sp_finalreunion = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         bt_regisframe = new javax.swing.JButton();
         bt_iniciarFrame = new javax.swing.JButton();
@@ -620,17 +607,6 @@ public class principal extends javax.swing.JFrame {
         bt_correosenviadosInbox.setText("Correos Enviados");
         bt_correosenviadosInbox.setBorder(null);
 
-        bt_spamInbox.setBackground(new java.awt.Color(255, 255, 255));
-        bt_spamInbox.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        bt_spamInbox.setForeground(new java.awt.Color(0, 0, 0));
-        bt_spamInbox.setText("No deseado");
-        bt_spamInbox.setBorder(null);
-        bt_spamInbox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_spamInboxMouseClicked(evt);
-            }
-        });
-
         bt_tareasInbox.setBackground(new java.awt.Color(255, 255, 255));
         bt_tareasInbox.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         bt_tareasInbox.setForeground(new java.awt.Color(0, 0, 0));
@@ -648,6 +624,11 @@ public class principal extends javax.swing.JFrame {
         bt_basuraInbox.setForeground(new java.awt.Color(0, 0, 0));
         bt_basuraInbox.setText("Basura");
         bt_basuraInbox.setBorder(null);
+        bt_basuraInbox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_basuraInboxMouseClicked(evt);
+            }
+        });
 
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -720,7 +701,6 @@ public class principal extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addComponent(bt_borradoresInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
-                            .addComponent(jSeparator6)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -728,14 +708,14 @@ public class principal extends javax.swing.JFrame {
                                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(bt_inbox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(bt_chats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(bt_spamInbox, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                                         .addComponent(bt_basuraInbox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jSeparator6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(bt_gruposinbox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(39, 39, 39)))
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -749,11 +729,9 @@ public class principal extends javax.swing.JFrame {
                 .addComponent(bt_correosenviadosInbox)
                 .addGap(26, 26, 26)
                 .addComponent(bt_borradoresInbox)
-                .addGap(28, 28, 28)
-                .addComponent(bt_spamInbox)
-                .addGap(30, 30, 30)
+                .addGap(26, 26, 26)
                 .addComponent(bt_basuraInbox)
-                .addGap(36, 36, 36)
+                .addGap(26, 26, 26)
                 .addComponent(bt_tareasInbox)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -839,24 +817,72 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jButton4.setText("Eliminar Correo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jSeparator13.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jSeparator14.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        bt_eliminarpermanentecorreo.setBackground(new java.awt.Color(255, 255, 255));
+        bt_eliminarpermanentecorreo.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        bt_eliminarpermanentecorreo.setForeground(new java.awt.Color(0, 0, 0));
+        bt_eliminarpermanentecorreo.setText("Eliminar Correo Permanente");
+        bt_eliminarpermanentecorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_eliminarpermanentecorreoActionPerformed(evt);
+            }
+        });
+
+        jSeparator15.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator15.setToolTipText("");
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(220, 220, 220)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_eliminarpermanentecorreo)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(198, 198, 198)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_opciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator13)
+            .addComponent(jSeparator14)
+            .addComponent(jSeparator15)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(cb_opciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_opciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21))
+                        .addGap(0, 13, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bt_eliminarpermanentecorreo, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
 
@@ -891,6 +917,9 @@ public class principal extends javax.swing.JFrame {
         });
         jm_editarcuenta.add(jMenuItem3);
 
+        jMenuItem4.setText("Programar una tarea");
+        jm_editarcuenta.add(jMenuItem4);
+
         jMenuBar2.add(jm_editarcuenta);
 
         jd_inbox.setJMenuBar(jMenuBar2);
@@ -902,13 +931,13 @@ public class principal extends javax.swing.JFrame {
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jd_inboxLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jd_inboxLayout.setVerticalGroup(
             jd_inboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_inboxLayout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
@@ -1965,26 +1994,45 @@ public class principal extends javax.swing.JFrame {
 
         jCheckBox1.setText("Todo el dia");
         jPanel18.add(jCheckBox1);
-        jCheckBox1.setBounds(580, 190, 90, 23);
-        jPanel18.add(jDateChooser1);
-        jDateChooser1.setBounds(280, 190, 130, 19);
-        jPanel18.add(jDateChooser2);
-        jDateChooser2.setBounds(280, 250, 130, 19);
+        jCheckBox1.setBounds(790, 190, 90, 23);
+        jPanel18.add(jdate_inicio);
+        jdate_inicio.setBounds(280, 190, 130, 19);
+        jPanel18.add(jdate_finalizar);
+        jdate_finalizar.setBounds(280, 250, 130, 19);
 
-        JSpinner.DateEditor de = new JSpinner.DateEditor(jSpinner1, "HH:mm:ss a");
-        jSpinner1.setEditor(de);
-        jPanel18.add(jSpinner1);
-        jSpinner1.setBounds(426, 190, 120, 20);
-
-        jScrollPane10.setViewportView(jTextPane1);
+        jScrollPane10.setViewportView(jp_ReunionesPane);
 
         jPanel18.add(jScrollPane10);
-        jScrollPane10.setBounds(70, 290, 690, 300);
+        jScrollPane10.setBounds(110, 300, 690, 300);
 
-        JSpinner.DateEditor de2 = new JSpinner.DateEditor(jSpinner2, "HH:mm:ss a");
-        jSpinner2.setEditor(de2);
-        jPanel18.add(jSpinner2);
-        jSpinner2.setBounds(430, 250, 120, 20);
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jButton3.setText("Volver al Inbox");
+        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel18.add(jButton3);
+        jButton3.setBounds(740, 20, 120, 30);
+
+        cb_inicioReunion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select...", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", " " }));
+        jPanel18.add(cb_inicioReunion);
+        cb_inicioReunion.setBounds(460, 190, 140, 24);
+
+        cb_finalizareunion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select...", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", " " }));
+        jPanel18.add(cb_finalizareunion);
+        cb_finalizareunion.setBounds(460, 250, 140, 24);
+
+        sp_inicioreunion.setModel(new javax.swing.SpinnerListModel(new String[] {"AM", "PM"}));
+        jPanel18.add(sp_inicioreunion);
+        sp_inicioreunion.setBounds(626, 190, 50, 20);
+
+        sp_finalreunion.setModel(new javax.swing.SpinnerListModel(new String[] {"AM", "PM"}));
+        jPanel18.add(sp_finalreunion);
+        sp_finalreunion.setBounds(626, 250, 50, 20);
 
         javax.swing.GroupLayout jd_editorReunionesLayout = new javax.swing.GroupLayout(jd_editorReuniones.getContentPane());
         jd_editorReuniones.getContentPane().setLayout(jd_editorReunionesLayout);
@@ -2260,6 +2308,10 @@ public class principal extends javax.swing.JFrame {
                 if (usuarioIng.equals(rs.getString(1)) && contraIng.equals(rs.getString(2))) {
                     JOptionPane.showMessageDialog(this, "Se ha logeado con exito!");
                     Usuario = usuarioIng;
+                    HiloReunion R = new HiloReunion("./ReunionCorreos");
+                    Thread recibir = new Thread(R);
+                    recibir.start();
+
                     jd_login.setModal(false);
                     jd_login.pack();
                     jd_login.setVisible(false);
@@ -2727,6 +2779,26 @@ public class principal extends javax.swing.JFrame {
         }
     }
 
+    public void escribirArchivoReunion() {
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(binarioReunion);
+            bw = new ObjectOutputStream(fw);
+            for (Reunion t : listaReuniones) {
+                bw.writeObject(t);
+            }
+            bw.flush();
+        } catch (IOException ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+            }
+        }
+    }
+
     public void cargarArchivoInbox() {
         try {
             listacorreosInbox = new ArrayList();
@@ -2911,16 +2983,28 @@ public class principal extends javax.swing.JFrame {
         }
     }
 
-    private void bt_spamInboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_spamInboxMouseClicked
-        jd_inbox.setModal(false);
-        jd_inbox.pack();
-        jd_inbox.setVisible(false);
-
-        jd_spam.setModal(true);
-        jd_spam.pack();
-        jd_spam.setLocationRelativeTo(this);
-        jd_spam.setVisible(true);
-    }//GEN-LAST:event_bt_spamInboxMouseClicked
+    public void cargarArchivoReuniones() {
+        try {
+            listaReuniones = new ArrayList();
+            Reunion temp;
+            if (binarioReunion.exists()) {
+                FileInputStream entrada
+                        = new FileInputStream(binarioReunion);
+                ObjectInputStream objeto
+                        = new ObjectInputStream(entrada);
+                try {
+                    while ((temp = (Reunion) objeto.readObject()) != null) {
+                        listaReuniones.add(temp);
+                    }
+                } catch (EOFException e) {
+                    //encontro el final del archivo
+                }
+                objeto.close();
+                entrada.close();
+            } //fin if           
+        } catch (Exception ex) {
+        }
+    }
 
     private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
         jd_spam.setModal(false);
@@ -3016,6 +3100,7 @@ public class principal extends javax.swing.JFrame {
             if (IsSelected(i, 1, tablainbox)) {
                 JOptionPane.showMessageDialog(this, "El mensaje se marco como visto!");
             }
+
             //System.out.println(listacorreosInbox.get(i));
         }
         tablainbox.setModel(modelo);
@@ -3322,7 +3407,6 @@ public class principal extends javax.swing.JFrame {
                 listaMiembros.get(i)
             };
             modelo.addRow(newrow);
-            //System.out.println(listacorreosInbox.get(i));
         }
         tabla_grupos.setModel(modelo);
     }//GEN-LAST:event_bt_verBandejaActionPerformed
@@ -3371,11 +3455,26 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void bt_enviarReunionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_enviarReunionMouseClicked
+        String[] correo;
         String asuntoReunion = tf_asuntoReuniones.getText();
         String ubicacion = tf_ubicacionReuniones.getText();
-        String inciotiempo = jSpinner1.getValue().toString();
-        String finaltiempo = jSpinner2.getValue().toString();
-        
+        String inciotiempo = cb_inicioReunion.getSelectedItem().toString()+" "+sp_inicioreunion.getValue().toString();
+        String finaltiempo = cb_finalizareunion.getSelectedItem().toString()+" "+sp_finalreunion.getValue().toString();
+        Date fechaInicio = jdate_inicio.getDate();
+        Date fechaFin = jdate_finalizar.getDate();
+        Reunion r = new Reunion(asuntoReunion, ubicacion, fechaInicio, fechaFin, inciotiempo, finaltiempo);
+        correo = tf_paraReuniones.getText().split(",");
+        try {
+            for (int i = 0; i < correo.length; i++) {
+                binarioReunion = new File("./ReunionCorreos");
+                cargarArchivoReuniones();
+                listaReuniones.add(r);
+                escribirArchivoReunion();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Sucedio un error!");
+        }
+        JOptionPane.showMessageDialog(this, "Se envio exitosamente!!");
     }//GEN-LAST:event_bt_enviarReunionMouseClicked
 
     private void bt_eliminARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_eliminARActionPerformed
@@ -3401,6 +3500,61 @@ public class principal extends javax.swing.JFrame {
         db.desconectar();
     }//GEN-LAST:event_bt_eliminARActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jd_editorReuniones.setModal(false);
+        jd_editorReuniones.pack();
+        jd_editorReuniones.setVisible(false);
+
+        jd_inbox.setModal(true);
+        jd_inbox.pack();
+        jd_inbox.setLocationRelativeTo(this);
+        jd_inbox.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void bt_basuraInboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_basuraInboxMouseClicked
+        limpiartablainbox();
+        DefaultTableModel modelo = (DefaultTableModel) tablainbox.getModel();
+        cargarArchivoBasura();
+        for (int i = 0; i < listacorreosBasura.size(); i++) {
+            Object[] newrow = {
+                listacorreosBasura.get(i)
+            };
+            modelo.addRow(newrow);
+        }
+
+        tablainbox.setModel(modelo);
+    }//GEN-LAST:event_bt_basuraInboxMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        for (int i = 0; i < tablainbox.getRowCount(); i++) {
+            if (IsSelected(i, 1, tablainbox)) {
+                int fila = tablainbox.getSelectedRow();
+                if (fila == -1) {
+                    JOptionPane.showMessageDialog(this, "Debe seleccionar un correo!");
+                } else {
+                    int resp = JOptionPane.showConfirmDialog(this, "Esta seguro que desea eliminar este correo?");
+                    if (resp == JOptionPane.YES_OPTION) {
+                        Correo c = (Correo) tablainbox.getValueAt(tablainbox.getSelectedRow(), 0);
+                        DefaultTableModel m = (DefaultTableModel) tablainbox.getModel();
+                        m.removeRow(tablainbox.getSelectedRow());
+                        binarioBasura = new File("./CorreosEliminados");
+                        cargarArchivoBasura();
+                        listacorreosBasura.add(c);
+                        escribirArchivoBasura();
+                    }
+                }
+
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void bt_eliminarpermanentecorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_eliminarpermanentecorreoActionPerformed
+        cargarArchivoInbox();
+        listacorreosInbox.remove(tablainbox.getSelectedRow());
+        escribirArchivoInbox();
+        JOptionPane.showMessageDialog(this,"El correo se ha eliminado permantemente del sistema!!!");
+    }//GEN-LAST:event_bt_eliminarpermanentecorreoActionPerformed
+
     public void buscarPersona(String buscar) {
         Direcciones logica = new Direcciones();
 
@@ -3412,12 +3566,33 @@ public class principal extends javax.swing.JFrame {
 
     public void addCheckBox(int columna, JTable tablita) {
         TableColumn tc = tablita.getColumnModel().getColumn(columna);
-        tc.setCellEditor(tablita.getDefaultEditor(Boolean.class));
-        tc.setCellRenderer(tablita.getDefaultRenderer(Boolean.class));
+        tc
+                .setCellEditor(tablita.getDefaultEditor(Boolean.class
+                ));
+        tc
+                .setCellRenderer(tablita.getDefaultRenderer(Boolean.class
+                ));
     }
 
     public boolean IsSelected(int fila, int columna, JTable tablita) {
         return tablita.getValueAt(fila, columna) != null;
+    }
+
+    public void limpiartablainbox() {
+        tablainbox.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Usuario", "Visto"
+                }
+        ) {
+            boolean[] canEdit = new boolean[]{
+                false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
     }
 
     /**
@@ -3434,16 +3609,24 @@ public class principal extends javax.swing.JFrame {
                 if ("windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -3456,6 +3639,7 @@ public class principal extends javax.swing.JFrame {
     }
     String Usuario;
     String correo;
+    File binarioReunion = null;
     File binarioInbox = null;
     File binarioEnviado = null;
     File binarioBorradores = null;
@@ -3463,6 +3647,7 @@ public class principal extends javax.swing.JFrame {
     File binarioGrupo = null;
     File MiembrosGrupoBin = null;
     File MiembrosGrupoRecibido = null;
+    File eliminado = null;
     // File binarioMiembrosGrupo = null;
     ArrayList<Correo> listacorreosInbox = new ArrayList();
     ArrayList<Correo> listacorreosEnviados = new ArrayList();
@@ -3471,6 +3656,7 @@ public class principal extends javax.swing.JFrame {
     ArrayList<Grupos> listaGrupos = new ArrayList();
     ArrayList<CorreoGrupos> listaMiembros = new ArrayList();
     ArrayList<CorreoGrupos> listaMiembrosRecibidos = new ArrayList();
+    ArrayList<Reunion> listaReuniones = new ArrayList();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_abreJDIALOGENVIO;
@@ -3489,6 +3675,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_descartarCorreogrupo;
     private javax.swing.JButton bt_descartargrupo;
     private javax.swing.JButton bt_eliminAR;
+    private javax.swing.JButton bt_eliminarpermanentecorreo;
     private javax.swing.JButton bt_enviarReunion;
     private javax.swing.JButton bt_enviarcorreo;
     private javax.swing.JButton bt_enviocorreogrupo;
@@ -3505,7 +3692,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_remarcado;
     private javax.swing.JButton bt_remarcadogrupo;
     private javax.swing.JButton bt_seleccionar;
-    private javax.swing.JButton bt_spamInbox;
     private javax.swing.JButton bt_subrayado;
     private javax.swing.JButton bt_subrayadogrupo;
     private javax.swing.JButton bt_tareasInbox;
@@ -3514,6 +3700,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_aggmiembros;
     private javax.swing.JComboBox<String> cb_estiloLetra;
     private javax.swing.JComboBox<String> cb_estiloLetraGrupo;
+    private javax.swing.JComboBox<String> cb_finalizareunion;
+    private javax.swing.JComboBox<String> cb_inicioReunion;
     private javax.swing.JComboBox<String> cb_miembrosgrupos;
     private javax.swing.JComboBox<String> cb_opciones;
     private javax.swing.JComboBox<String> cb_tamaño;
@@ -3529,9 +3717,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3589,6 +3777,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -3625,6 +3814,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -3633,9 +3825,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
@@ -3651,6 +3840,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_paneldegrupo;
     private javax.swing.JDialog jd_registro;
     private javax.swing.JDialog jd_spam;
+    private com.toedter.calendar.JDateChooser jdate_finalizar;
+    private com.toedter.calendar.JDateChooser jdate_inicio;
     private javax.swing.JLabel jl_NomGrupo;
     private javax.swing.JLabel jl_fotoDentro;
     private javax.swing.JLabel jl_minimizar;
@@ -3658,6 +3849,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jl_userdentro;
     private javax.swing.JLabel jl_usuario;
     private javax.swing.JMenu jm_editarcuenta;
+    private javax.swing.JTextPane jp_ReunionesPane;
     private javax.swing.JPasswordField jp_contraseña;
     private javax.swing.JPasswordField jp_contraseñaModificar;
     private javax.swing.JPasswordField jp_contraseñaingresada;
@@ -3666,6 +3858,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_fModificar;
     private javax.swing.JRadioButton rb_m;
     private javax.swing.JRadioButton rb_mModificar;
+    private javax.swing.JSpinner sp_finalreunion;
+    private javax.swing.JSpinner sp_inicioreunion;
     private javax.swing.JTextArea ta_descgrupo;
     private javax.swing.JTable tabla_grupos;
     private javax.swing.JTable tabla_libretadirecciones;
